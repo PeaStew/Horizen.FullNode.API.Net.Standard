@@ -1,13 +1,14 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Xml.Linq;
-//using ZenRPC;
-//using ZenRPC.RPCReturnTypes;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
 
-//namespace secnodetracker.NET
-//{
-//    public interface IRPC
-//    {
+
+namespace Horizen.FullNode.API.Net.Standard.RPC
+{
+    public interface IRPCAll: IRPCBlockchain, IRPCControl, IRPCDisclosure, IRPCGenerating, IRPCMining, IRPCNetwork, IRPCRawTransaction, IRPCUtil, IRPCWallet, IRPCZCommands
+    {
+    }
+}
 //        /* Commands
 //         * == Blockchain ==
 //getbestblockhash
@@ -159,7 +160,7 @@
 //        verifytxoutproof "proof"
 //        */
 //        string GetBestBlockHash();
-        
+
 //        GetBlockResult GetBlock(string hash, bool verbose = true);
 //        string GetBlockNotVerbose(string hash, bool verbose = false);
 //        GetBlockResult GetBlock(int height, bool verbose = true);
@@ -219,7 +220,7 @@
 //        getgenerate
 //        setgenerate generate ( genproclimit )
 //        */
-        
+
 //        #endregion
 //        #region Mining
 //        /* == Mining ==
@@ -309,7 +310,7 @@
 //        ValidateAddressResult ValidateAddress(string address);
 //        bool VerifyMessage(string address, string signature, string message);
 //        ZValidateAddressResult zValidateAddress(string zaddress);
-        
+
 //        #endregion
 //        #region Wallet
 //        /*== Wallet ==

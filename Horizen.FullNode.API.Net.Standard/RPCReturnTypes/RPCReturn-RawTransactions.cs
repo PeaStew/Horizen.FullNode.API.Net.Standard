@@ -23,7 +23,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
             public string txid { get; set; }
             public int vout { get; set; }
             public Scriptsig scriptSig { get; set; }
-            public int sequence { get; set; }
+            public long sequence { get; set; }
 
             public class Scriptsig
             {
@@ -102,7 +102,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
             public string txid { get; set; }
             public int vout { get; set; }
             public Scriptsig scriptSig { get; set; }
-            public int sequence { get; set; }
+            public long sequence { get; set; }
         }
 
         public class Scriptsig
@@ -155,7 +155,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
             public string txid { get; set; }
             public int vout { get; set; }
             public string scriptSig { get; set; }
-            public int sequence { get; set; }
+            public long sequence { get; set; }
             public string error { get; set; }
         }
     }

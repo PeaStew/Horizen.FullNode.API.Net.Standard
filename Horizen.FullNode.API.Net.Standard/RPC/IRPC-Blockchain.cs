@@ -3,7 +3,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPC
+    public partial interface IRPCBlockchain
     {
         /* == Blockchain ==
         getbestblockhash
@@ -24,19 +24,19 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         */
         string GetBestBlockHash();
 
-        GetBlockResult GetBlock(string hash, bool verbose = true);
-        string GetBlockNotVerbose(string hash, bool verbose = false);
-        GetBlockResult GetBlock(int height, bool verbose = true);
-        string GetBlockNotVerbose(int height, bool verbose = false);
+        GetBlockResult GetBlock(string hash, int verbosity);
+        string GetBlock(string hash);
+        GetBlockResult GetBlock(int height, int verbosity);
+        string GetBlock(int height);
 
         GetBlockChainInfoResult GetBlockChainInfo();
 
         int GetBlockCount();
 
-        Blockhash GetBlockHash(int index);
+        string GetBlockHash(int index);
 
         GetBlockHeaderResult GetBlockHeader(string hash, bool verbose = true);
-        string GetBlockHeaderNotVerbose(string hash, bool verbose = false);
+        string GetBlockHeader(string hash);
 
         float GetDifficulty();
 

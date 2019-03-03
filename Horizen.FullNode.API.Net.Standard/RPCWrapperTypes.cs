@@ -4,19 +4,42 @@ using System.Text;
 
 namespace Horizen.FullNode.API.Net.Standard
 {
-    public class Address
+    public interface IAddress
     {
-        public virtual string address { get; set; }
+        string address { get; set; }
+        bool ValidateAddress(string address);
     }
 
-    public class TAddress: Address
+    public class PublicAddress: IAddress
+    {
+        public string address { get; set; }
+        public bool ValidateAddress(string address)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public interface IPrivateAddress: IAddress
     {
         
     }
 
-    public class ZAddress: Address
+    public class SproutAddress : IPrivateAddress
     {
-        
+        public string address { get; set; }
+        public bool ValidateAddress(string address)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class SaplingAddress : IPrivateAddress
+    {
+        public string address { get; set; }
+        public bool ValidateAddress(string address)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class TransactionId

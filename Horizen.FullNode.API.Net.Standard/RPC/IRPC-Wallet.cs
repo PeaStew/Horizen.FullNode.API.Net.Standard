@@ -6,7 +6,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPC
+    public partial interface IRPCWallet
     {
         /*== Wallet ==
         addmultisigaddress nrequired ["key",...] ( "account" )
@@ -47,17 +47,17 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         settxfee amount
         signmessage "horizenaddress" "message"
         */
-        TAddress AddMultiSigAddress(int nrequired, IList<string> keysobject);
+        PublicAddress AddMultiSigAddress(int nrequired, IList<string> keysobject);
         string BackupWallet(string filename); //filename
         string DumpPrivKey(string t_addr);
         string DumpWallet(string filename);
         bool EncryptWallet(string passphrase);// https://zcash-rpc.github.io/encryptwallet.html
         string GetAccount(string address); //returns null
-        TAddress GetAccountAddress(string address = "");
+        PublicAddress GetAccountAddress(string address = "");
         IList<string> GetAddressesByAccount(string address = "");
         float GetBalance(string account = "", int minconf = 1, bool includeWatchOnly = false);
-        TAddress GetNewAddress(string account = "");
-        TAddress GetRawChangeAddress();
+        PublicAddress GetNewAddress(string account = "");
+        PublicAddress GetRawChangeAddress();
         float GetReceivedByAccount(string account = "", int minconf = 1);
         float GetReceivedByAddress(string address, int minconf = 1);
         GetTransactionResult GetTransaction(string txid, bool includeWatchOnly = false);
@@ -85,6 +85,6 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         TransactionId SendFrom(string fromAccount = "", string toAccount = "", float amount = float.NaN,
             int minconf = 1,
             string comment = null);
-        TransactionId SendMany(TAddress address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null);
+        TransactionId SendMany(PublicAddress address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null);
     }
 }

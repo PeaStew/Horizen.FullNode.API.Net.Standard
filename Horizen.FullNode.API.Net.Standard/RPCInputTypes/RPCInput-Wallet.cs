@@ -6,7 +6,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCInputTypes
 {
     public class SendManyInput
     {
-        private TAddress address { get; set; }
+        private PublicAddress address { get; set; }
         private float amount { get; set; }
     }
 }

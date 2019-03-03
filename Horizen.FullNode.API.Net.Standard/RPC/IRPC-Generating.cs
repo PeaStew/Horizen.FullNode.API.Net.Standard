@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPC
+    public partial interface IRPCGenerating
     {
         /* == Generating ==
         generate numblocks
