@@ -24,6 +24,7 @@ namespace Horizen.FullNode.API.Net.Standard
         {
             using (var wc = new WebClient())
             {
+                ServicePointManager.DefaultConnectionLimit = 500;
                 RPCActive = true;
                 wc.Headers[HttpRequestHeader.ContentType] = "text/plain";
                 wc.Credentials = new NetworkCredential { UserName = RPCUser, Password = RPCPassword };

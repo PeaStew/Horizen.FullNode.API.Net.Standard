@@ -17,53 +17,54 @@ namespace Horizen.FullNode.API.Net.Standard
             RpcConnection = rpcConnection;
         }
 
+        private string RunCommand(string commandName, object[] _params)
+        {
+            //TODO: Check for error
+            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), commandName, _params));
+            Console.WriteLine(JsonConvert.SerializeObject(result.error));
+            return JsonConvert.SerializeObject(result.result);
+        }
+
         #region Blockchain
         public string GetBestBlockHash()
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getbestblockhash", new object[0])).result;
-            return JsonConvert.SerializeObject(result);
+            return RunCommand("getbestblockhash", new object[0]);
         }
 
         public GetBlockResult GetBlock(string hash, int verbosity)
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getblock", new object[]{ $"{hash}",true})).result;
-            return JsonConvert.DeserializeObject<GetBlockResult>(JsonConvert.SerializeObject(result));
+            return JsonConvert.DeserializeObject<GetBlockResult>(RunCommand("getblock", new object[] { $"{hash}", true }));
         }
 
         public string GetBlock(string hash)
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getblock", new object[] { $"{hash}", false })).result;
-            return JsonConvert.SerializeObject(result);
+            return RunCommand("getblock", new object[] {$"{hash}", false});
         }
 
         public GetBlockResult GetBlock(int height, int verbosity)
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getblock", new object[] { $"{height}",true })).result;
-            return JsonConvert.DeserializeObject<GetBlockResult>(JsonConvert.SerializeObject(result));
+            return JsonConvert.DeserializeObject<GetBlockResult>(RunCommand("getblock", new object[] { $"{height}", true }));
         }
 
         public string GetBlock(int height)
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getblock", new object[] { $"{height}", false })).result;
-            return JsonConvert.SerializeObject(result);
+            return RunCommand("getblock", new object[] { $"{height}", false });
         }
 
         public GetBlockChainInfoResult GetBlockChainInfo()
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getblockchaininfo", new object[0])).result;
-            return JsonConvert.DeserializeObject <GetBlockChainInfoResult>(JsonConvert.SerializeObject(result));
+            return JsonConvert.DeserializeObject<GetBlockChainInfoResult>(RunCommand("getblockchaininfo", new object[0]));
         }
 
         public int GetBlockCount()
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getblockcount", new object[0])).result;
-            return int.Parse(JsonConvert.SerializeObject(result));
+            return int.Parse(RunCommand("getblockcount", new object[0]));
         }
 
         public string GetBlockHash(int index)
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getblockhash", new object[] { index})).result;
-            return JsonConvert.SerializeObject(result);
+
+            return RunCommand("getblockhash", new object[] { index });
         }
 
         public GetBlockHeaderResult GetBlockHeader(string hash, bool verbose)
@@ -119,8 +120,7 @@ namespace Horizen.FullNode.API.Net.Standard
         #region Control
         public GetInfoResult GetInfo()
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getinfo", new object[0])).result;
-            return JsonConvert.DeserializeObject<GetInfoResult>(JsonConvert.SerializeObject(result));
+            return JsonConvert.DeserializeObject<GetInfoResult>(RunCommand("getinfo", new object[0]));
         }
 
         public string Help()
@@ -261,8 +261,7 @@ namespace Horizen.FullNode.API.Net.Standard
 
         public GetRawTransactionVerboseResult GetRawTransaction(string txid, bool verbose = true)
         {
-            var result = RpcConnection.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), "getrawtransaction", new object[] { $"{txid}", 1 })).result;
-            return JsonConvert.DeserializeObject<GetRawTransactionVerboseResult>(JsonConvert.SerializeObject(result));
+            return JsonConvert.DeserializeObject<GetRawTransactionVerboseResult>(RunCommand("getrawtransaction", new object[] { $"{txid}", 1 }));
         }
 
         public string GetRawTransactionNonVerbose(string txid, bool verbose = false)
