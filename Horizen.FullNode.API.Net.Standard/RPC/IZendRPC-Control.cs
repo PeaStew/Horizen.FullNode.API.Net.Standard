@@ -2,7 +2,7 @@
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCControl
+    public partial interface IZendRPCControl
     {
         /* == Control ==
         getinfo
@@ -11,7 +11,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         */
         GetInfoResult GetInfo();
 
-        string Help();
+        string Help(string command = null);
 
         void Stop();
     }

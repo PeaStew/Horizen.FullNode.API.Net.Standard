@@ -7,7 +7,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCRawTransaction
+    public partial interface IZendRPCRawTransaction
     {
         /* == Rawtransactions ==
         createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,...}

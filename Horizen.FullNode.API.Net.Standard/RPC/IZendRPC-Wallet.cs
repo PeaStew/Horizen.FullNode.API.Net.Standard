@@ -6,7 +6,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCWallet
+    public partial interface IZendRPCWallet
     {
         /*== Wallet ==
         addmultisigaddress nrequired ["key",...] ( "account" )

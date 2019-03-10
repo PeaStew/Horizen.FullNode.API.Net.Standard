@@ -3,7 +3,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCBlockchain
+    public partial interface IZendRPCBlockchain
     {
         /* == Blockchain ==
         getbestblockhash
@@ -42,7 +42,8 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
 
         GetMemPoolInfoResult GetMemPoolInfo();
 
-        IList<string> GetRawMemPool(bool verbose = true);
+        IList<string> GetRawMemPool();
+        Dictionary<string, GetRawMemPoolResult> GetRawMemPool(bool verbose = true);
 
         GetTxOutResult GetTxOut(string txid, int voutValue, bool includemempool = true);
 
@@ -50,8 +51,8 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
 
         GetTxOutSetInfoResult GetTxOutSetInfo();
 
-        bool VerifyChain(int? checklevel = null, int? numblocks = null);
+        bool VerifyChain(int checklevel = 3, int numblocks = 288);
 
-        IList<string> VerifyTxtOutProof(string proof);
+        IList<string> VerifyTxOutProof(string proof);
     }
 }

@@ -20,7 +20,15 @@ namespace Horizen.FullNode.API.Net.Standard
         public string RPCPassword { get; set; } = "asdfsdfasgffdgfdsi787690879siuhdfjh";
         public bool RPCActive { get; private set; } = false;
 
-        public WebClientResponse GetRPCResult(RPCData rpcData)
+        public string RunCommand(string commandName, object[] _params)
+        {
+            //TODO: Check for error
+            var result = this.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), commandName, _params));
+            Console.WriteLine(JsonConvert.SerializeObject(result.error));
+            return JsonConvert.SerializeObject(result.result);
+        }
+
+        private WebClientResponse GetRPCResult(RPCData rpcData)
         {
             using (var wc = new WebClient())
             {
@@ -53,7 +61,6 @@ namespace Horizen.FullNode.API.Net.Standard
         public string method { get; set; }
         [JsonProperty("params")]
         public object[] _params { get; set; }
-
 
         public string GetJsonString()
         {

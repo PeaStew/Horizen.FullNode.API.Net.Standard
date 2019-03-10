@@ -5,7 +5,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCNetwork
+    public partial interface IZendRPCNetwork
     {
         /* == Network ==
         addnode "node" "add|remove|onetry"

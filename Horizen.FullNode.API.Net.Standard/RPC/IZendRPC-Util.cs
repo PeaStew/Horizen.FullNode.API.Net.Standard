@@ -5,7 +5,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCUtil
+    public partial interface IZendRPCUtil
     {
         /* == Util ==
         createmultisig nrequired ["key",...] //(string, required) A json array of keys which are Zcash addresses or hex-encoded public keys

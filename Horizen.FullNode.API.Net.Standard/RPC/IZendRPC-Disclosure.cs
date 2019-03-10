@@ -5,7 +5,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCDisclosure
+    public partial interface IZendRPCDisclosure
     {
         /* == Disclosure ==
 z_getpaymentdisclosure "txid" "js_index" "output_index" ("message")

@@ -7,7 +7,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCMining
+    public partial interface IZendRPCMining
     {
         /* == Mining ==
         getblocksubsidy height
@@ -24,8 +24,9 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         GetBlockTemplateResult GetBlockTemplate(GetBlockTemplateInput jsonRequestObject = null);
         int GetLocalSolps();
         GetMiningInfoResult GetMiningInfo();
-        int GetNetworkHashPs(int? blocks = null, int? height = null);
-        int GetNetworkSolPs(int? blocks = null, int? height = null);
+        int GetNetworkHashPs(int blocks = 120, int height = -1);
+        int GetNetworkSolPs(int blocks = 120, int height = -1);
         bool PrioritiseTransaction(string txid, double priorityDelta, int feeDelta);
+        string submitblock(string hexdata, SubmitBlockInput jsonparametersobject);
     }
 }

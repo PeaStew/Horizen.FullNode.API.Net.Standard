@@ -33,5 +33,6 @@ namespace Horizen.FullNode.API.Net.Standard
             //If we have no description attribute, just return the ToString of the enum
             return enumerationValue.ToString();
         }
+
     }
 }

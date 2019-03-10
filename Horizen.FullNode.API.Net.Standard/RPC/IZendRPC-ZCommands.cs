@@ -6,7 +6,7 @@ using Horizen.FullNode.API.Net.Standard.RPCReturnTypes;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public partial interface IRPCZCommands
+    public partial interface IZendRPCZCommands
     {
         //        #region zCommands
         //        /* z_exportkey "zaddr"

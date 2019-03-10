@@ -119,6 +119,17 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
     }
 
 
+    public class GetRawMemPoolResult
+    {
+        public int size { get; set; }
+        public float fee { get; set; }
+        public int time { get; set; }
+        public int height { get; set; }
+        public float startingpriority { get; set; }
+        public float currentpriority { get; set; }
+        public string[] depends { get; set; }
+    }
+
     public class GetTxOutResult
     {
         public string bestblock { get; set; }

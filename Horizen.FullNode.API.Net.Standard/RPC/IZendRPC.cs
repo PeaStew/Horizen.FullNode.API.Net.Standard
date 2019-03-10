@@ -5,8 +5,9 @@ using System.Xml.Linq;
 
 namespace Horizen.FullNode.API.Net.Standard.RPC
 {
-    public interface IRPCAll: IRPCBlockchain, IRPCControl, IRPCDisclosure, IRPCGenerating, IRPCMining, IRPCNetwork, IRPCRawTransaction, IRPCUtil, IRPCWallet, IRPCZCommands
+    public interface IZendRPC: IZendRPCBlockchain, IZendRPCControl, IZendRPCDisclosure, IZendRPCGenerating, IZendRPCMining, IZendRPCNetwork, IZendRPCRawTransaction, IZendRPCUtil, IZendRPCWallet, IZendRPCZCommands
     {
+        T GetRPCTypedResult<T>(string method, object[] _params);
     }
 }
 //        /* Commands
