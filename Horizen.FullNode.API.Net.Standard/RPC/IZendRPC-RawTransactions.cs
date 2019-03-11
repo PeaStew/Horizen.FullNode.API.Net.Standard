@@ -21,7 +21,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         string CreateRawTransaction(CreateRawTransactionInput arguments);
         DecodeRawTransactionResult DecodeRawTransaction(string hexstring);
         DecodeScriptResult DecodeScript(string hexstring);
-        FundTransactionResult FundTransaction(string hexstring);
+        FundRawTransactionResult FundRawTransaction(string hexstring);
         GetRawTransactionVerboseResult GetRawTransaction(string txid, bool verbose = true);
         string GetRawTransactionNonVerbose(string txid, bool verbose = false);
         string SendRawTransaction(string hexstring, bool allowHighFees = false);

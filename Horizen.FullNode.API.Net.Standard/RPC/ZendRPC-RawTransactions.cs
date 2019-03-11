@@ -11,44 +11,44 @@ namespace Horizen.FullNode.API.Net.Standard
     public partial class ZendRPC : IZendRPC
     { 
         #region Raw Transactions
-    public string CreateRawTransaction(CreateRawTransactionInput arguments)
+        public string CreateRawTransaction(CreateRawTransactionInput arguments)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.CreateRawTransaction], new object[] { arguments });
         }
 
         public DecodeRawTransactionResult DecodeRawTransaction(string hexstring)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<DecodeRawTransactionResult>(ZendRPCCommands[ZendRPCCommand.DecodeRawTransaction], new object[] { $"{hexstring}" });
         }
 
         public DecodeScriptResult DecodeScript(string hexstring)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<DecodeScriptResult>(ZendRPCCommands[ZendRPCCommand.DecodeScript], new object[] { $"{hexstring}" });
         }
 
-        public FundTransactionResult FundTransaction(string hexstring)
+        public FundRawTransactionResult FundRawTransaction(string hexstring)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<FundRawTransactionResult>(ZendRPCCommands[ZendRPCCommand.FundRawTransaction], new object[] { $"{hexstring}" });
         }
 
         public GetRawTransactionVerboseResult GetRawTransaction(string txid, bool verbose = true)
         {
-            return JsonConvert.DeserializeObject<GetRawTransactionVerboseResult>(new RPCConnection().RunCommand("getrawtransaction", new object[] { $"{txid}", 1 }));
+            return GetRPCTypedResult<GetRawTransactionVerboseResult>(ZendRPCCommands[ZendRPCCommand.GetRawTransaction], new object[] { $"{txid}", 1 });
         }
 
         public string GetRawTransactionNonVerbose(string txid, bool verbose = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetRawTransaction], new object[] { $"{txid}", 0 });
         }
 
         public string SendRawTransaction(string hexstring, bool allowHighFees = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.SendRawTransaction], new object[] { $"{hexstring}", allowHighFees });
         }
 
         public SignRawTransactionResult SendRawTransaction(string hexstring, IList<SignRawTransactionInputPreviousTranscations> prevtxs = null, IList<string> privatekeys = null, SignRawTransactionInputSigHashType sighashtype = SignRawTransactionInputSigHashType.All, string branchid = null)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<SignRawTransactionResult>(ZendRPCCommands[ZendRPCCommand.SignRawTransaction], new object[] { $"{hexstring}", prevtxs, privatekeys, sighashtype, $"{branchid}" });
         }
         #endregion
     }

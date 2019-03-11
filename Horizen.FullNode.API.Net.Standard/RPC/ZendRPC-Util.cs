@@ -11,35 +11,38 @@ namespace Horizen.FullNode.API.Net.Standard
     public partial class ZendRPC : IZendRPC
     {
         #region Util
-    public CreateMultiSigResult CreateMultiSig(int nrequired, IList<string> keys)
+
+        public CreateMultiSigResult CreateMultiSig(int nrequired, IList<string> keys)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<CreateMultiSigResult>(ZendRPCCommands[ZendRPCCommand.CreateMultisig], new object[] { nrequired, keys });
         }
 
         public float EstimateFee(int nblocks)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<float>(ZendRPCCommands[ZendRPCCommand.EstimateFee], new object[] { nblocks });
         }
 
         public int EstimatePriority(int nblocks)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<int>(ZendRPCCommands[ZendRPCCommand.EstimatePriority], new object[] { nblocks });
         }
 
         public ValidateAddressResult ValidateAddress(string address)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<ValidateAddressResult>(ZendRPCCommands[ZendRPCCommand.ValidateAddress], new object[] { $"{address}" });
         }
 
         public bool VerifyMessage(string address, string signature, string message)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.VerifyMessage],
+                new object[] {$"{address}", $"{signature}", $"{message}"});
         }
 
         public ZValidateAddressResult zValidateAddress(string zaddress)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<ZValidateAddressResult>(ZendRPCCommands[ZendRPCCommand.ZValidateAddress], new object[] { $"{zaddress}" });
         }
+
         #endregion
     }
 }

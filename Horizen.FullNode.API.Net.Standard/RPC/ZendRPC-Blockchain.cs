@@ -13,96 +13,96 @@ namespace Horizen.FullNode.API.Net.Standard
         #region Blockchain
         public string GetBestBlockHash()
         {
-            return GetRPCTypedResult<string>("getbestblockhash", new object[0]);
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetBestBlockHash], new object[0]);
         }
 
         public GetBlockResult GetBlock(string hash, int verbosity)
         {
-            return GetRPCTypedResult<GetBlockResult>("getblock", new object[] { $"{hash}", true });
+            return GetRPCTypedResult<GetBlockResult>(ZendRPCCommands[ZendRPCCommand.GetBlock], new object[] { $"{hash}", true });
         }
 
         public string GetBlock(string hash)
         {
-            return GetRPCTypedResult<string>("getblock", new object[] { $"{hash}", false });
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetBlock], new object[] { $"{hash}", false });
         }
 
         public GetBlockResult GetBlock(int height, int verbosity)
         {
-            return GetRPCTypedResult<GetBlockResult>("getblock", new object[] { $"{height}", true });
+            return GetRPCTypedResult<GetBlockResult>(ZendRPCCommands[ZendRPCCommand.GetBlock], new object[] { $"{height}", true });
         }
 
         public string GetBlock(int height)
         {
-            return GetRPCTypedResult<string>("getblock", new object[] { $"{height}", false });
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetBlock], new object[] { $"{height}", false });
         }
 
         public GetBlockChainInfoResult GetBlockChainInfo()
         {
-            return GetRPCTypedResult<GetBlockChainInfoResult>("getblockchaininfo", new object[0]);}
+            return GetRPCTypedResult<GetBlockChainInfoResult>(ZendRPCCommands[ZendRPCCommand.GetBlockchainInfo], new object[0]);}
 
         public int GetBlockCount()
         {
-            return GetRPCTypedResult<int>("getblockcount", new object[0]);
+            return GetRPCTypedResult<int>(ZendRPCCommands[ZendRPCCommand.GetBlockCount], new object[0]);
         }
 
         public string GetBlockHash(int index)
         {
-            return GetRPCTypedResult<string>("getblockhash", new object[] { index });
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetBlockHash], new object[] { index });
         }
 
         public GetBlockHeaderResult GetBlockHeader(string hash, bool verbose)
         {
-            return GetRPCTypedResult<GetBlockHeaderResult>("getblockheader", new object[] { $"{hash}", true });
+            return GetRPCTypedResult<GetBlockHeaderResult>(ZendRPCCommands[ZendRPCCommand.GetBlockHeader], new object[] { $"{hash}", true });
         }
 
         public string GetBlockHeader(string hash)
         {
-            return GetRPCTypedResult<string>("getblockheader", new object[] { $"{hash}", false });
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetBlockHeader], new object[] { $"{hash}", false });
         }
 
         public float GetDifficulty()
         {
-            return GetRPCTypedResult<float>("getdifficulty", new object[0]);
+            return GetRPCTypedResult<float>(ZendRPCCommands[ZendRPCCommand.GetDifficulty], new object[0]);
         }
 
         public GetMemPoolInfoResult GetMemPoolInfo()
         {
-            return GetRPCTypedResult<GetMemPoolInfoResult>("getmempoolinforesult", new object[0]);
+            return GetRPCTypedResult<GetMemPoolInfoResult>(ZendRPCCommands[ZendRPCCommand.GetMemPoolInfo], new object[0]);
         }
 
         public IList<string> GetRawMemPool()
         {
-            return GetRPCTypedResult<List<string>>("getrawmempool", new object[0]);
+            return GetRPCTypedResult<List<string>>(ZendRPCCommands[ZendRPCCommand.GetRawMemPool], new object[0]);
         }
 
         public Dictionary<string,GetRawMemPoolResult> GetRawMemPool(bool verbose)
         {
-            return GetRPCTypedResult<Dictionary<string, GetRawMemPoolResult>>("getrawmempool", new object[]{true});
+            return GetRPCTypedResult<Dictionary<string, GetRawMemPoolResult>>(ZendRPCCommands[ZendRPCCommand.GetRawMemPool], new object[]{true});
         }
 
         public GetTxOutResult GetTxOut(string txid, int voutValue, bool includemempool = true)
         {
-            return GetRPCTypedResult<GetTxOutResult>("gettxout", new object[] { $"{txid}",$"{voutValue}",includemempool});
+            return GetRPCTypedResult<GetTxOutResult>(ZendRPCCommands[ZendRPCCommand.GetTxOut], new object[] { $"{txid}",$"{voutValue}",includemempool});
         }
 
         public string GetTxOutProof(IList<string> txids, string blockhash = null)
         {
-            return GetRPCTypedResult<string>("gettxoutproof", new object[] { txids, blockhash });
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetTxOutProof], new object[] { txids, blockhash });
         }
 
         public GetTxOutSetInfoResult GetTxOutSetInfo()
         {
-            return GetRPCTypedResult<GetTxOutSetInfoResult>("gettxoutsetinfo", new object[0]);
+            return GetRPCTypedResult<GetTxOutSetInfoResult>(ZendRPCCommands[ZendRPCCommand.GetTxOutSetInfo], new object[0]);
         }
 
         public bool VerifyChain(int checklevel = 3, int numblocks = 288)
         {
-            return GetRPCTypedResult<bool>("verifychain", new object []{checklevel,numblocks});
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.VerifyChain], new object []{checklevel,numblocks});
         }
 
         public IList<string> VerifyTxOutProof(string proof)
         {
-            return GetRPCTypedResult<List<string>>("verifytxoutproof", new object[] { $"{proof}"});
+            return GetRPCTypedResult<List<string>>(ZendRPCCommands[ZendRPCCommand.VerifyTxOutProof], new object[] { $"{proof}"});
         }
         #endregion
 

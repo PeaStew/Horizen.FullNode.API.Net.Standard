@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Horizen.FullNode.API.Net.Standard.RPCInputTypes
@@ -30,16 +31,22 @@ namespace Horizen.FullNode.API.Net.Standard.RPCInputTypes
 
     public enum SignRawTransactionInputSigHashType
     {
+        [EnumMember(Value = "All")]
         [Description("ALL")]
         All,
+        [EnumMember(Value = "NONE")]
         [Description("NONE")]
         None,
+        [EnumMember(Value = "SINGLE")]
         [Description("SINGLE")]
         Single,
+        [EnumMember(Value = "ALL|ANYONECANPAY")]
         [Description("ALL|ANYONECANPAY")]
         AllAnyonecanpay,
+        [EnumMember(Value = "NONE|ANYONECANPAY")]
         [Description("NONE|ANYONECANPAY")]
         NoneAnyonecanpay,
+        [EnumMember(Value = "SINGLE|ANYONECANPAY")]
         [Description("SINGLE|ANYONECANPAY")]
         SingleAnyonecanpay
     }

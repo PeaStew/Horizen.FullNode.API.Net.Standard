@@ -73,7 +73,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public string p2sh { get; set; }
     }
 
-    public class FundTransactionResult
+    public class FundRawTransactionResult
     {
         public string hex { get; set; }
         public float fee { get; set; }
