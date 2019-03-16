@@ -47,17 +47,17 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         settxfee amount
         signmessage "horizenaddress" "message"
         */
-        PublicAddress AddMultiSigAddress(int nrequired, IList<string> keysobject);
+        string AddMultiSigAddress(int nrequired, IList<string> keysobject);
         string BackupWallet(string filename); //filename
         string DumpPrivKey(string t_addr);
         string DumpWallet(string filename);
         bool EncryptWallet(string passphrase);// https://zcash-rpc.github.io/encryptwallet.html
         string GetAccount(string address); //returns null
-        PublicAddress GetAccountAddress(string address = "");
+        string GetAccountAddress(string address = "");
         IList<string> GetAddressesByAccount(string address = "");
         float GetBalance(string account = "", int minconf = 1, bool includeWatchOnly = false);
-        PublicAddress GetNewAddress(string account = "");
-        PublicAddress GetRawChangeAddress();
+        string GetNewAddress(string account = "");
+        string GetRawChangeAddress();
         float GetReceivedByAccount(string account = "", int minconf = 1);
         float GetReceivedByAddress(string address, int minconf = 1);
         GetTransactionResult GetTransaction(string txid, bool includeWatchOnly = false);
@@ -82,9 +82,13 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         bool LockUnspent(bool unlock, IList<LockUnspentInputTransaction> transactions);// TODO: coincontrol
         bool Move(string fromAccount = "", string toAccount = "", float amount = float.NaN, int minconf = 1,
             string comment = null);//TODO: throw deprecated
-        TransactionId SendFrom(string fromAccount = "", string toAccount = "", float amount = float.NaN,
+        string SendFrom(string fromAccount = "", string toAccount = "", float amount = float.NaN,
             int minconf = 1,
             string comment = null);
-        TransactionId SendMany(PublicAddress address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null);
+        string SendMany(string address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null);
+        string SendToAddress(string address, float amount, string comment, string commentto, bool subtractfeefromamount = false);
+        void SetAccount(string address, string account = "");
+        bool SetTxFee(float amount);
+        string SignMessage(string taddr, string message);
     }
 }

@@ -11,167 +11,187 @@ namespace Horizen.FullNode.API.Net.Standard
     public partial class ZendRPC : IZendRPC
     {
         #region Wallet
-        public PublicAddress AddMultiSigAddress(int nrequired, IList<string> keysobject)
+        public string AddMultiSigAddress(int nrequired, IList<string> keysobject)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.AddMultisigAddress], new object[] { nrequired, keysobject });
         }
 
         public string BackupWallet(string filename)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{filename}" });
         }
 
         public string DumpPrivKey(string t_addr)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.DumpPrivkey], new object[] { $"{t_addr}" });
         }
 
         public string DumpWallet(string filename)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.DumpWallet], new object[] { $"{filename}" });
         }
 
         public bool EncryptWallet(string passphrase)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.EncryptWallet], new object[] { $"{passphrase}" });
         }
 
         public string GetAccount(string address)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetAccount], new object[] { $"{address}" });
         }
 
-        public PublicAddress GetAccountAddress(string address = "")
+        public string GetAccountAddress(string address = "")
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetAccountAddress], new object[] { $"{address}" });
         }
 
         public IList<string> GetAddressesByAccount(string address = "")
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<List<string>>(ZendRPCCommands[ZendRPCCommand.GetAddressByAccount], new object[] { $"{address}" });
         }
 
         public float GetBalance(string account = "", int minconf = 1, bool includeWatchOnly = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<float>(ZendRPCCommands[ZendRPCCommand.GetBalance], new object[] { $"{account}",minconf,includeWatchOnly });
         }
 
-        public PublicAddress GetNewAddress(string account = "")
+        public string GetNewAddress(string account = "")
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{account}" });
         }
 
-        public PublicAddress GetRawChangeAddress()
+        public string GetRawChangeAddress()
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[0]);
         }
 
         public float GetReceivedByAccount(string account = "", int minconf = 1)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<float>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{account}", minconf });
         }
 
         public float GetReceivedByAddress(string address, int minconf = 1)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<float>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{address}", minconf });
         }
 
         public GetTransactionResult GetTransaction(string txid, bool includeWatchOnly = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<GetTransactionResult>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{txid}", includeWatchOnly });
         }
 
         public float GetUnconfirmedBalance()
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<float>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[0]);
         }
 
         public GetWalletInfoResult GetWalletInfo()
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<GetWalletInfoResult>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[0]);
         }
 
         public bool ImportAddress(string address, string label = "", bool rescan = true)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{address}", $"{label}", rescan });
         }
 
         public bool ImportPrivKey(string privkey, string label = "", bool rescan = true)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{privkey}", $"{label}",rescan });
         }
 
         public bool ImportWallet(string filepath)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{filepath}" });
         }
 
         public bool KeyPoolRefill(int newsize)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { newsize });
         }
 
         public IList<ListAccountsResult> ListAccounts(int minconf = 1, bool includeWatchOnly = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<List<ListAccountsResult>>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { minconf,includeWatchOnly });
         }
 
         public object[][][] ListAddressGroupings()
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<object[][][]>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[0]);
         }
 
         public IList<ListLockUnspentResult> ListLockUnspent()
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<List<ListLockUnspentResult>>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[0]);
         }
 
         public IList<ListReceivedByAccountResult> ListReceivedByAccount(int minconf = 1, bool includeEmpty = false, bool includeWatchOnly = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<List<ListReceivedByAccountResult>>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { minconf,includeEmpty,includeWatchOnly });
         }
 
         public IList<ListReceivedByAddressResult> ListReceivedByAddress(int minconf = 1, bool includeEmpty = false, bool includeWatchOnly = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<List<ListReceivedByAddressResult>>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { minconf, includeEmpty, includeWatchOnly });
         }
 
         public ListSinceBlockResult ListSinceBlock(string blockhash = null, int targetCOnfirmations = 1, bool includeWatchOnly = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<ListSinceBlockResult>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{blockhash}", targetCOnfirmations, includeWatchOnly });
         }
 
         public IList<ListTransactionsResult> ListTransactions(string account = "*", int count = 10, int from = 0, bool includeWatchOnly = false)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<List<ListTransactionsResult>>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{account}", count, from, includeWatchOnly });
         }
 
         public IList<ListUnspentResult> ListUnspent(int minconf = 1, int maxconf = 9999999, IList<string> addresses = null)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<List<ListUnspentResult>>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { minconf, maxconf, addresses });
         }
 
         public bool LockUnspent(bool unlock, IList<LockUnspentInputTransaction> transactions)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { unlock, transactions });
         }
 
         public bool Move(string fromAccount = "", string toAccount = "", float amount = float.NaN, int minconf = 1, string comment = null)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{fromAccount}", $"{toAccount}", amount, minconf, $"{comment}" });
         }
 
-        public TransactionId SendFrom(string fromAccount = "", string toAccount = "", float amount = float.NaN, int minconf = 1, string comment = null)
+        public string SendFrom(string fromAccount = "", string toAccount = "", float amount = float.NaN, int minconf = 1, string comment = null)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{fromAccount}", $"{toAccount}", amount, minconf, $"{comment}" });
         }
 
-        public TransactionId SendMany(PublicAddress address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null)
+        public string SendMany(string address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null)
         {
-            throw new NotImplementedException();
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.BackupWallet], new object[] { $"{address}", outputs, minconf, $"{comment}", subtractfeefromamount });
         }
 
-        
+        public string SendToAddress(string address, float amount, string comment, string commentto,
+            bool subtractfeefromamount = false)
+        {
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.SendToAddress], new object[] { $"{address}", amount, $"{comment}", $"{commentto}", subtractfeefromamount });
+        }
+
+        public void SetAccount(string address, string account = "")
+        {
+            new RPCConnection().RunCommand(ZendRPCCommands[ZendRPCCommand.SetAccount], new object[] { $"{address}", $"{account}", });
+        }
+
+        public bool SetTxFee(float amount)
+        {
+            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.SetTxFee], new object[] { amount });
+        }
+
+        public string SignMessage(string taddr, string message)
+        {
+            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.SignMessage], new object[] { $"{taddr}", $"{message}" });
+        }
+
         #endregion
     }
 }
