@@ -21,7 +21,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public string nonce { get; set; }
         public string solution { get; set; }
         public string bits { get; set; }
-        public decimal difficulty { get; set; }
+        public double difficulty { get; set; }
         public string chainwork { get; set; }
         public string anchor { get; set; }
         public string previousblockhash { get; set; }
@@ -34,8 +34,8 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public int blocks { get; set; }
         public int headers { get; set; }
         public string bestblockhash { get; set; }
-        public decimal difficulty { get; set; }
-        public decimal verificationprogress { get; set; }
+        public double difficulty { get; set; }
+        public double verificationprogress { get; set; }
         public string chainwork { get; set; }
         public bool pruned { get; set; }
         public int commitments { get; set; }
@@ -90,7 +90,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public string nonce { get; set; }
         public string solution { get; set; }
         public string bits { get; set; }
-        public decimal difficulty { get; set; }
+        public double difficulty { get; set; }
         public string chainwork { get; set; }
         public string previousblockhash { get; set; }
         public string nextblockhash { get; set; }
@@ -122,11 +122,11 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
     public class GetRawMemPoolResult
     {
         public int size { get; set; }
-        public decimal fee { get; set; }
+        public double fee { get; set; }
         public int time { get; set; }
         public int height { get; set; }
-        public decimal startingpriority { get; set; }
-        public decimal currentpriority { get; set; }
+        public double startingpriority { get; set; }
+        public double currentpriority { get; set; }
         public string[] depends { get; set; }
     }
 
@@ -134,7 +134,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
     {
         public string bestblock { get; set; }
         public int confirmations { get; set; }
-        public decimal value { get; set; }
+        public double value { get; set; }
         public Scriptpubkey scriptPubKey { get; set; }
         public int version { get; set; }
         public bool coinbase { get; set; }
@@ -158,7 +158,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public int txouts { get; set; }
         public int bytes_serialized { get; set; }
         public string hash_serialized { get; set; }
-        public decimal total_amount { get; set; }
+        public double total_amount { get; set; }
     }
 
     #endregion

@@ -55,13 +55,13 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         string GetAccount(string address); //returns null
         string GetAccountAddress(string address = "");
         IList<string> GetAddressesByAccount(string address = "");
-        decimal GetBalance(string account = "", int minconf = 1, bool includeWatchOnly = false);
+        double GetBalance(string account = "", int minconf = 1, bool includeWatchOnly = false);
         string GetNewAddress(string account = "");
         string GetRawChangeAddress();
-        decimal GetReceivedByAccount(string account = "", int minconf = 1);
-        decimal GetReceivedByAddress(string address, int minconf = 1);
+        double GetReceivedByAccount(string account = "", int minconf = 1);
+        double GetReceivedByAddress(string address, int minconf = 1);
         GetTransactionResult GetTransaction(string txid, bool includeWatchOnly = false);
-        decimal GetUnconfirmedBalance();
+        double GetUnconfirmedBalance();
         GetWalletInfoResult GetWalletInfo();
         bool ImportAddress(string address, string label = "", bool rescan = true);
         bool ImportPrivKey(string privkey, string label = "", bool rescan = true);
@@ -81,15 +81,15 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
             bool includeWatchOnly = false);
         IList<ListUnspentResult> ListUnspent(int minconf = 1, int maxconf = 9999999, IList<string> addresses = null); // TODO: coincontrol
         bool LockUnspent(bool unlock, IList<LockUnspentInputTransaction> transactions);// TODO: coincontrol
-        bool Move(string fromAccount = "", string toAccount = "", decimal amount = decimal.Zero, int minconf = 1,
+        bool Move(string fromAccount = "", string toAccount = "", double amount = double.NaN, int minconf = 1,
             string comment = null);//TODO: throw deprecated
-        string SendFrom(string fromAccount = "", string toAccount = "", decimal amount = decimal.Zero,
+        string SendFrom(string fromAccount = "", string toAccount = "", double amount = double.NaN,
             int minconf = 1,
             string comment = null);
         string SendMany(string address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null);
-        string SendToAddress(string address, decimal amount, string comment, string commentto, bool subtractfeefromamount = false);
+        string SendToAddress(string address, double amount, string comment, string commentto, bool subtractfeefromamount = false);
         void SetAccount(string address, string account = "");
-        bool SetTxFee(decimal amount);
+        bool SetTxFee(double amount);
         string SignMessage(string taddr, string message);
     }
 }

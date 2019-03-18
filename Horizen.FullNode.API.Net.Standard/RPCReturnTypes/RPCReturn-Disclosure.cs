@@ -21,7 +21,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public bool signatureVerified { get; set; }
         public string paymentAddress { get; set; }
         public string memo { get; set; }
-        public decimal value { get; set; }
+        public double value { get; set; }
         public bool commitmentMatch { get; set; }
         public bool valid { get; set; }
     }

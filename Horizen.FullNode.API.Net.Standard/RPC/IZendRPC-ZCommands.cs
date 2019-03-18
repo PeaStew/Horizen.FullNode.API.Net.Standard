@@ -37,12 +37,12 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         string ZExportKey(string address);
         string ZExportViewingKey(string address);
         string ZExportWallet(string address);
-        decimal ZGetBalance(string address, int minconf = 1);
+        double ZGetBalance(string address, int minconf = 1);
         //TODO: Upgrade when Sapling addresses available
         //string ZGetNewAddress(string type = "sapling");
         string ZGetNewAddress();
-        IList<ZOperationStatusOrResult> ZGetOperationResult(IEnumerable<string> opid);
-        IList<ZOperationStatusOrResult> ZGetOperationStatus(IEnumerable<string> opid);
+        IList<ZOperationStatusOrResult> ZGetOperationResult(IEnumerable<string> opids);
+        IList<ZOperationStatusOrResult> ZGetOperationStatus(IEnumerable<string> opids);
         ZGetTotalBalanceResult ZGetTotalBalance(int minconf = 1, bool includeWatchOnly = false);
         void ZImportKey(string zkey, ZImportKeyRescanType rescan, int startheight = 0);
         void ZImportViewingKey(string vkey, ZImportKeyRescanType rescan, int startheight = 0);

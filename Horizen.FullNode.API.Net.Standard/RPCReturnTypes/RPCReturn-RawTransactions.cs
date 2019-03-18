@@ -34,7 +34,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
 
         public class Vout
         {
-            public decimal value { get; set; }
+            public double value { get; set; }
             public int n { get; set; }
             public Scriptpubkey scriptPubKey { get; set; }
 
@@ -50,8 +50,8 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
 
         public class Vjoinsplit
         {
-            public decimal vpub_old { get; set; }
-            public decimal vpub_new { get; set; }
+            public double vpub_old { get; set; }
+            public double vpub_new { get; set; }
             public string anchor { get; set; }
             public IList<string> nullifiers { get; set; }
             public IList<string> commitments { get; set; }
@@ -76,7 +76,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
     public class FundRawTransactionResult
     {
         public string hex { get; set; }
-        public decimal fee { get; set; }
+        public double fee { get; set; }
         public int changepos { get; set; }
     }
 
@@ -113,7 +113,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
 
         public class Vout
         {
-            public decimal value { get; set; }
+            public double value { get; set; }
             public int n { get; set; }
             public Scriptpubkey scriptPubKey { get; set; }
         }
@@ -129,8 +129,8 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
 
         public class Vjoinsplit
         {
-            public decimal vpub_old { get; set; }
-            public decimal vpub_new { get; set; }
+            public double vpub_old { get; set; }
+            public double vpub_new { get; set; }
             public string anchor { get; set; }
             public string[] nullifiers { get; set; }
             public string[] commitments { get; set; }

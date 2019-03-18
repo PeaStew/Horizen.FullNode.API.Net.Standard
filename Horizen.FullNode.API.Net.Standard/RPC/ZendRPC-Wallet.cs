@@ -51,9 +51,9 @@ namespace Horizen.FullNode.API.Net.Standard
             return GetRPCTypedResult<List<string>>(ZendRPCCommand.GetAddressByAccount.GetDescription(), new object[] { $"{address}" });
         }
 
-        public decimal GetBalance(string account = "", int minconf = 1, bool includeWatchOnly = false)
+        public double GetBalance(string account = "", int minconf = 1, bool includeWatchOnly = false)
         {
-            return GetRPCTypedResult<decimal>(ZendRPCCommand.GetBalance.GetDescription(), new object[] { $"{account}",minconf,includeWatchOnly });
+            return GetRPCTypedResult<double>(ZendRPCCommand.GetBalance.GetDescription(), new object[] { $"{account}",minconf,includeWatchOnly });
         }
 
         public string GetNewAddress(string account = "")
@@ -66,14 +66,14 @@ namespace Horizen.FullNode.API.Net.Standard
             return GetRPCTypedResult<string>(ZendRPCCommand.GetRawChangeAddress.GetDescription(), new object[0]);
         }
 
-        public decimal GetReceivedByAccount(string account = "", int minconf = 1)
+        public double GetReceivedByAccount(string account = "", int minconf = 1)
         {
-            return GetRPCTypedResult<decimal>(ZendRPCCommand.GetReceivedByAccount.GetDescription(), new object[] { $"{account}", minconf });
+            return GetRPCTypedResult<double>(ZendRPCCommand.GetReceivedByAccount.GetDescription(), new object[] { $"{account}", minconf });
         }
 
-        public decimal GetReceivedByAddress(string address, int minconf = 1)
+        public double GetReceivedByAddress(string address, int minconf = 1)
         {
-            return GetRPCTypedResult<decimal>(ZendRPCCommand.GetReceivedByAddress.GetDescription(), new object[] { $"{address}", minconf });
+            return GetRPCTypedResult<double>(ZendRPCCommand.GetReceivedByAddress.GetDescription(), new object[] { $"{address}", minconf });
         }
 
         public GetTransactionResult GetTransaction(string txid, bool includeWatchOnly = false)
@@ -81,9 +81,9 @@ namespace Horizen.FullNode.API.Net.Standard
             return GetRPCTypedResult<GetTransactionResult>(ZendRPCCommand.GetTransaction.GetDescription(), new object[] { $"{txid}", includeWatchOnly });
         }
 
-        public decimal GetUnconfirmedBalance()
+        public double GetUnconfirmedBalance()
         {
-            return GetRPCTypedResult<decimal>(ZendRPCCommand.GetUnconfirmedBalance.GetDescription(), new object[0]);
+            return GetRPCTypedResult<double>(ZendRPCCommand.GetUnconfirmedBalance.GetDescription(), new object[0]);
         }
 
         public GetWalletInfoResult GetWalletInfo()
@@ -161,12 +161,12 @@ namespace Horizen.FullNode.API.Net.Standard
             return GetRPCTypedResult<bool>(ZendRPCCommand.LockUnspent.GetDescription(), new object[] { unlock, transactions });
         }
 
-        public bool Move(string fromAccount = "", string toAccount = "", decimal amount = decimal.Zero, int minconf = 1, string comment = null)
+        public bool Move(string fromAccount = "", string toAccount = "", double amount = double.NaN, int minconf = 1, string comment = null)
         {
             return GetRPCTypedResult<bool>(ZendRPCCommand.Move.GetDescription(), new object[] { $"{fromAccount}", $"{toAccount}", amount, minconf, $"{comment}" });
         }
 
-        public string SendFrom(string fromAccount = "", string toAccount = "", decimal amount = decimal.Zero, int minconf = 1, string comment = null)
+        public string SendFrom(string fromAccount = "", string toAccount = "", double amount = double.NaN, int minconf = 1, string comment = null)
         {
             return GetRPCTypedResult<string>(ZendRPCCommand.SendFrom.GetDescription(), new object[] { $"{fromAccount}", $"{toAccount}", amount, minconf, $"{comment}" });
         }
@@ -176,7 +176,7 @@ namespace Horizen.FullNode.API.Net.Standard
             return GetRPCTypedResult<string>(ZendRPCCommand.SendMany.GetDescription(), new object[] { $"{address}", outputs, minconf, $"{comment}", subtractfeefromamount });
         }
 
-        public string SendToAddress(string address, decimal amount, string comment, string commentto,
+        public string SendToAddress(string address, double amount, string comment, string commentto,
             bool subtractfeefromamount = false)
         {
             return GetRPCTypedResult<string>(ZendRPCCommand.SendToAddress.GetDescription(), new object[] { $"{address}", amount, $"{comment}", $"{commentto}", subtractfeefromamount });
@@ -187,7 +187,7 @@ namespace Horizen.FullNode.API.Net.Standard
             new RPCConnection().RunCommand(ZendRPCCommand.SetAccount.GetDescription(), new object[] { $"{address}", $"{account}", });
         }
 
-        public bool SetTxFee(decimal amount)
+        public bool SetTxFee(double amount)
         {
             return GetRPCTypedResult<bool>(ZendRPCCommand.SetTxFee.GetDescription(), new object[] { amount });
         }

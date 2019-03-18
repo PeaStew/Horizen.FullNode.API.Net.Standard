@@ -6,7 +6,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
 {
     public class GetTransactionResult
     {
-        public decimal amount { get; set; }
+        public double amount { get; set; }
         public int confirmations { get; set; }
         public string blockhash { get; set; }
         public int blockindex { get; set; }
@@ -23,7 +23,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
             public string account { get; set; }
             public string address { get; set; }
             public string category { get; set; }
-            public decimal amount { get; set; }
+            public double amount { get; set; }
             public int vout { get; set; }
         }
 
@@ -33,8 +33,8 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
             public string[] nullifiers { get; set; }
             public string[] commitments { get; set; }
             public string[] macs { get; set; }
-            public decimal vpub_old { get; set; }
-            public decimal vpub_new { get; set; }
+            public double vpub_old { get; set; }
+            public double vpub_new { get; set; }
         }
     }
 
@@ -42,19 +42,19 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
     public class GetWalletInfoResult
     {
         public int walletversion { get; set; }
-        public decimal balance { get; set; }
-        public decimal unconfirmed_balance { get; set; }
-        public decimal immature_balance { get; set; }
+        public double balance { get; set; }
+        public double unconfirmed_balance { get; set; }
+        public double immature_balance { get; set; }
         public int txcount { get; set; }
         public int keypoololdest { get; set; }
         public int keypoolsize { get; set; }
-        public decimal paytxfee { get; set; }
+        public double paytxfee { get; set; }
     }
 
 
     public class ListAccountsResult
     {
-        public decimal balance { get; set; }
+        public double balance { get; set; }
     }
 
 
@@ -67,7 +67,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
     public class ListReceivedByAccountResult
     {
         public string account { get; set; }
-        public decimal amount { get; set; }
+        public double amount { get; set; }
         public int confirmations { get; set; }
     }
 
@@ -75,7 +75,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
     {
         public string address { get; set; }
         public string account { get; set; }
-        public decimal amount { get; set; }
+        public double amount { get; set; }
         public int confirmations { get; set; }
         public string[] txids { get; set; }
     }
@@ -91,9 +91,9 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
             public string account { get; set; }
             public string address { get; set; }
             public string category { get; set; }
-            public decimal amount { get; set; }
+            public double amount { get; set; }
             public int vout { get; set; }
-            public decimal fee { get; set; }
+            public double fee { get; set; }
             public int confirmations { get; set; }
             public string blockhash { get; set; }
             public int blockindex { get; set; }
@@ -107,8 +107,8 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
 
             public class Vjoinsplit
             {
-                public decimal vpub_old { get; set; }
-                public decimal vpub_new { get; set; }
+                public double vpub_old { get; set; }
+                public double vpub_new { get; set; }
                 public string anchor { get; set; }
                 public string[] nullifiers { get; set; }
                 public string[] commitments { get; set; }
@@ -126,9 +126,9 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public string account { get; set; }
         public string address { get; set; }
         public string category { get; set; }
-        public decimal amount { get; set; }
+        public double amount { get; set; }
         public int vout { get; set; }
-        public decimal fee { get; set; }
+        public double fee { get; set; }
         public int confirmations { get; set; }
         public string blockhash { get; set; }
         public int blockindex { get; set; }
@@ -142,8 +142,8 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
 
         public class Vjoinsplit
         {
-            public decimal vpub_old { get; set; }
-            public decimal vpub_new { get; set; }
+            public double vpub_old { get; set; }
+            public double vpub_new { get; set; }
             public string anchor { get; set; }
             public string[] nullifiers { get; set; }
             public string[] commitments { get; set; }
@@ -165,7 +165,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public string address { get; set; }
         public string account { get; set; }
         public string scriptPubKey { get; set; }
-        public decimal amount { get; set; }
+        public double amount { get; set; }
         public int confirmations { get; set; }
         public bool spendable { get; set; }
     }

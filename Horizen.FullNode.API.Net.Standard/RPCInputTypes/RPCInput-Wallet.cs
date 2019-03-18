@@ -7,6 +7,6 @@ namespace Horizen.FullNode.API.Net.Standard.RPCInputTypes
     public class SendManyInput
     {
         private PublicAddress address { get; set; }
-        private decimal amount { get; set; }
+        private double amount { get; set; }
     }
 }

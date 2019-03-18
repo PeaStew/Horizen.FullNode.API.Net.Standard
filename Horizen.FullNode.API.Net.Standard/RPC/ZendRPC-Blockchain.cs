@@ -66,9 +66,9 @@ namespace Horizen.FullNode.API.Net.Standard
                 new object[0]);
         }
 
-        public decimal GetDifficulty()
+        public double GetDifficulty()
         {
-            return GetRPCTypedResult<decimal>(ZendRPCCommand.GetDifficulty.GetDescription(), new object[0]);
+            return GetRPCTypedResult<double>(ZendRPCCommand.GetDifficulty.GetDescription(), new object[0]);
         }
 
         public GetMemPoolInfoResult GetMemPoolInfo()

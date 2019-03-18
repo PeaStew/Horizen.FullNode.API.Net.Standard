@@ -39,7 +39,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         string GetBlockHeader(string hash);
         IList<GetChainTipsResult> GetChainTips();
 
-        decimal GetDifficulty();
+        double GetDifficulty();
 
         GetMemPoolInfoResult GetMemPoolInfo();
 

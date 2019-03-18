@@ -19,7 +19,7 @@ namespace Horizen.FullNode.API.Net.Standard
             if (typeof(T) == typeof(string)
                 || typeof(T) == typeof(int)
                 || typeof(T) == typeof(long)
-                || typeof(T) == typeof(decimal)
+                || typeof(T) == typeof(double)
                 || typeof(T) == typeof(double)
                 || typeof(T) == typeof(bool))
             {

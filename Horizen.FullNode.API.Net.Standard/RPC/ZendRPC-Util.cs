@@ -17,9 +17,9 @@ namespace Horizen.FullNode.API.Net.Standard
             return GetRPCTypedResult<CreateMultiSigResult>(ZendRPCCommand.CreateMultisig.GetDescription(), new object[] { nrequired, keys });
         }
 
-        public decimal EstimateFee(int nblocks)
+        public double EstimateFee(int nblocks)
         {
-            return GetRPCTypedResult<decimal>(ZendRPCCommand.EstimateFee.GetDescription(), new object[] { nblocks });
+            return GetRPCTypedResult<double>(ZendRPCCommand.EstimateFee.GetDescription(), new object[] { nblocks });
         }
 
         public int EstimatePriority(int nblocks)
