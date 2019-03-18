@@ -8,10 +8,10 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
 
     public class GetBlockSubsidyResult
     {
-        public float miner { get; set; }
-        public float community { get; set; }
-        public float securenodes { get; set; }
-        public float supernodes { get; set; }
+        public decimal miner { get; set; }
+        public decimal community { get; set; }
+        public decimal securenodes { get; set; }
+        public decimal supernodes { get; set; }
     }
 
 
@@ -62,7 +62,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public int blocks { get; set; }
         public int currentblocksize { get; set; }
         public int currentblocktx { get; set; }
-        public float difficulty { get; set; }
+        public decimal difficulty { get; set; }
         public string errors { get; set; }
         public int genproclimit { get; set; }
         public int localsolps { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Horizen.FullNode.API.Net.Standard.RPCInputTypes;
@@ -33,11 +34,30 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         //        */
         //        #endregion
         //        #endregion
-        //        double z_getbalance(string addr);
-        //        List<ZOperationStatusOrResult> z_getoperationresult(IEnumerable<string> opid);
-        //        List<ZOperationStatusOrResult> z_getoperationstatus(IEnumerable<string> opid);
-        //        List<string> z_listaddresses();
-        //        List<string> z_listoperationids();
-        //        string z_sendmany(string zaddr, double amts, double amt, double fee);
+        string ZExportKey(string address);
+        string ZExportViewingKey(string address);
+        string ZExportWallet(string address);
+        decimal ZGetBalance(string address, int minconf = 1);
+        //TODO: Upgrade when Sapling addresses available
+        //string ZGetNewAddress(string type = "sapling");
+        string ZGetNewAddress();
+        IList<ZOperationStatusOrResult> ZGetOperationResult(IEnumerable<string> opid);
+        IList<ZOperationStatusOrResult> ZGetOperationStatus(IEnumerable<string> opid);
+        ZGetTotalBalanceResult ZGetTotalBalance(int minconf = 1, bool includeWatchOnly = false);
+        void ZImportKey(string zkey, ZImportKeyRescanType rescan, int startheight = 0);
+        void ZImportViewingKey(string vkey, ZImportKeyRescanType rescan, int startheight = 0);
+        void ZImportWallet(string filename);
+        IList<string> ZListAddresses(bool includewatchonly);
+        IList<string> ZListOperationIds(ZListOperationIdsStatusType status);
+        IList<ZListReceivedByAddressResult> ZListReceivedByAddress(string address, int minconf = 1);
+        //ZListUnspent TODO: when available
+        //ZMergeToAddress TODO: when available
+        string ZSendMany(string fromaddress, IList<ZSendManyAmountsInput> amounts, int minconf = 1, double fee = 0.0001);
+        ZShieldCoinbase ZShieldCoinbase(string fromaddress, string toaddress, double fee = 0.0001, int limit = 50);
+        IList<ZCBenchmarkResult> ZCBenchMark(ZCBenchmarkType benchmarktype, int samplecount = 1);
+        //TODO:zcrawjoinsplit
+        ZCRawKeygen ZCRawKeygen();
+        ZCRawReceive ZCRawReceive(string zcsecretkey, string encryptednote);
+        string ZCSampleJoinsplit(); //returns JSDescription
     }
 }

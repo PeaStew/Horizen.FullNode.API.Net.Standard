@@ -14,33 +14,33 @@ namespace Horizen.FullNode.API.Net.Standard
 
         public CreateMultiSigResult CreateMultiSig(int nrequired, IList<string> keys)
         {
-            return GetRPCTypedResult<CreateMultiSigResult>(ZendRPCCommands[ZendRPCCommand.CreateMultisig], new object[] { nrequired, keys });
+            return GetRPCTypedResult<CreateMultiSigResult>(ZendRPCCommand.CreateMultisig.GetDescription(), new object[] { nrequired, keys });
         }
 
-        public float EstimateFee(int nblocks)
+        public decimal EstimateFee(int nblocks)
         {
-            return GetRPCTypedResult<float>(ZendRPCCommands[ZendRPCCommand.EstimateFee], new object[] { nblocks });
+            return GetRPCTypedResult<decimal>(ZendRPCCommand.EstimateFee.GetDescription(), new object[] { nblocks });
         }
 
         public int EstimatePriority(int nblocks)
         {
-            return GetRPCTypedResult<int>(ZendRPCCommands[ZendRPCCommand.EstimatePriority], new object[] { nblocks });
+            return GetRPCTypedResult<int>(ZendRPCCommand.EstimatePriority.GetDescription(), new object[] { nblocks });
         }
 
         public ValidateAddressResult ValidateAddress(string address)
         {
-            return GetRPCTypedResult<ValidateAddressResult>(ZendRPCCommands[ZendRPCCommand.ValidateAddress], new object[] { $"{address}" });
+            return GetRPCTypedResult<ValidateAddressResult>(ZendRPCCommand.ValidateAddress.GetDescription(), new object[] { $"{address}" });
         }
 
         public bool VerifyMessage(string address, string signature, string message)
         {
-            return GetRPCTypedResult<bool>(ZendRPCCommands[ZendRPCCommand.VerifyMessage],
+            return GetRPCTypedResult<bool>(ZendRPCCommand.VerifyMessage.GetDescription(),
                 new object[] {$"{address}", $"{signature}", $"{message}"});
         }
 
         public ZValidateAddressResult zValidateAddress(string zaddress)
         {
-            return GetRPCTypedResult<ZValidateAddressResult>(ZendRPCCommands[ZendRPCCommand.ZValidateAddress], new object[] { $"{zaddress}" });
+            return GetRPCTypedResult<ZValidateAddressResult>(ZendRPCCommand.ZValidateAddress.GetDescription(), new object[] { $"{zaddress}" });
         }
 
         #endregion

@@ -13,42 +13,42 @@ namespace Horizen.FullNode.API.Net.Standard
         #region Raw Transactions
         public string CreateRawTransaction(CreateRawTransactionInput arguments)
         {
-            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.CreateRawTransaction], new object[] { arguments });
+            return GetRPCTypedResult<string>(ZendRPCCommand.CreateRawTransaction.GetDescription(), new object[] { arguments });
         }
 
         public DecodeRawTransactionResult DecodeRawTransaction(string hexstring)
         {
-            return GetRPCTypedResult<DecodeRawTransactionResult>(ZendRPCCommands[ZendRPCCommand.DecodeRawTransaction], new object[] { $"{hexstring}" });
+            return GetRPCTypedResult<DecodeRawTransactionResult>(ZendRPCCommand.DecodeRawTransaction.GetDescription(), new object[] { $"{hexstring}" });
         }
 
         public DecodeScriptResult DecodeScript(string hexstring)
         {
-            return GetRPCTypedResult<DecodeScriptResult>(ZendRPCCommands[ZendRPCCommand.DecodeScript], new object[] { $"{hexstring}" });
+            return GetRPCTypedResult<DecodeScriptResult>(ZendRPCCommand.DecodeScript.GetDescription(), new object[] { $"{hexstring}" });
         }
 
         public FundRawTransactionResult FundRawTransaction(string hexstring)
         {
-            return GetRPCTypedResult<FundRawTransactionResult>(ZendRPCCommands[ZendRPCCommand.FundRawTransaction], new object[] { $"{hexstring}" });
+            return GetRPCTypedResult<FundRawTransactionResult>(ZendRPCCommand.FundRawTransaction.GetDescription(), new object[] { $"{hexstring}" });
         }
 
         public GetRawTransactionVerboseResult GetRawTransaction(string txid, bool verbose = true)
         {
-            return GetRPCTypedResult<GetRawTransactionVerboseResult>(ZendRPCCommands[ZendRPCCommand.GetRawTransaction], new object[] { $"{txid}", 1 });
+            return GetRPCTypedResult<GetRawTransactionVerboseResult>(ZendRPCCommand.GetRawTransaction.GetDescription(), new object[] { $"{txid}", 1 });
         }
 
         public string GetRawTransactionNonVerbose(string txid, bool verbose = false)
         {
-            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.GetRawTransaction], new object[] { $"{txid}", 0 });
+            return GetRPCTypedResult<string>(ZendRPCCommand.GetRawTransaction.GetDescription(), new object[] { $"{txid}", 0 });
         }
 
         public string SendRawTransaction(string hexstring, bool allowHighFees = false)
         {
-            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.SendRawTransaction], new object[] { $"{hexstring}", allowHighFees });
+            return GetRPCTypedResult<string>(ZendRPCCommand.SendRawTransaction.GetDescription(), new object[] { $"{hexstring}", allowHighFees });
         }
 
         public SignRawTransactionResult SendRawTransaction(string hexstring, IList<SignRawTransactionInputPreviousTranscations> prevtxs = null, IList<string> privatekeys = null, SignRawTransactionInputSigHashType sighashtype = SignRawTransactionInputSigHashType.All, string branchid = null)
         {
-            return GetRPCTypedResult<SignRawTransactionResult>(ZendRPCCommands[ZendRPCCommand.SignRawTransaction], new object[] { $"{hexstring}", prevtxs, privatekeys, sighashtype, $"{branchid}" });
+            return GetRPCTypedResult<SignRawTransactionResult>(ZendRPCCommand.SignRawTransaction.GetDescription(), new object[] { $"{hexstring}", prevtxs, privatekeys, sighashtype, $"{branchid}" });
         }
         #endregion
     }

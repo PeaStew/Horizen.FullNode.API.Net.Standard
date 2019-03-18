@@ -36,11 +36,5 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public string diversifier { get; set; } //sapling
         public string diversifiedtransmissionkey { get; set; } //sapling
     }
-
-
-    
-
-
-
     #endregion
 }

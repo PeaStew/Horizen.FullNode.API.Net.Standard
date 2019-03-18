@@ -11,7 +11,7 @@ namespace Horizen.FullNode.API.Net.Standard
         public static string GetDescription<T>(this T enumerationValue)
             where T : struct
         {
-            Type type = enumerationValue.GetType();
+            var type = enumerationValue.GetType();
             if (!type.IsEnum)
             {
                 throw new ArgumentException("EnumerationValue must be of Enum type", "enumerationValue");
@@ -19,7 +19,7 @@ namespace Horizen.FullNode.API.Net.Standard
 
             //Tries to find a DescriptionAttribute for a potential friendly name
             //for the enum
-            MemberInfo[] memberInfo = type.GetMember(enumerationValue.ToString());
+            var memberInfo = type.GetMember(enumerationValue.ToString());
             if (memberInfo != null && memberInfo.Length > 0)
             {
                 object[] attrs = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);

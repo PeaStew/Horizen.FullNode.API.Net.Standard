@@ -48,7 +48,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public int connections { get; set; }
         public bool tls_cert_verified { get; set; }
         public Network[] networks { get; set; }
-        public float relayfee { get; set; }
+        public decimal relayfee { get; set; }
         public Localaddress[] localaddresses { get; set; }
         public string warnings { get; set; }
 
@@ -85,7 +85,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public int bytesrecv { get; set; }
         public int conntime { get; set; }
         public int timeoffset { get; set; }
-        public float pingtime { get; set; }
+        public decimal pingtime { get; set; }
         public int version { get; set; }
         public string subver { get; set; }
         public bool inbound { get; set; }

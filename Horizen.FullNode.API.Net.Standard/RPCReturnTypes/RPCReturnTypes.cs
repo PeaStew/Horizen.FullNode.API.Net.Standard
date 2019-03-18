@@ -17,7 +17,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public string status { get; set; }
         public int creation_time { get; set; }
         public TransactionId result { get; set; }
-        public float execution_secs { get; set; }
+        public decimal execution_secs { get; set; }
         public string method { get; set; }
         public TransactionDetails _params { get; set; }
 
@@ -31,13 +31,13 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
             public string fromaddress { get; set; }
             public Amount[] amounts { get; set; }
             public int minconf { get; set; }
-            public float fee { get; set; }
+            public decimal fee { get; set; }
         }
 
         public class Amount
         {
             public string address { get; set; }
-            public float amount { get; set; }
+            public decimal amount { get; set; }
         }
     }
 

@@ -15,13 +15,13 @@ namespace Horizen.FullNode.API.Net.Standard
 
     public string ZGetPaymentDisclosure(string txid, int jsIndex, int outputIndex, string message = null)
         {
-            return GetRPCTypedResult<string>(ZendRPCCommands[ZendRPCCommand.ZGetPaymentDisclosure],
+            return GetRPCTypedResult<string>(ZendRPCCommand.ZGetPaymentDisclosure.GetDescription(),
                 new object[] {$"{txid}", jsIndex, outputIndex, $"{message}"});
         }
 
         public ZValidatePaymentDisclosureResult ZValidatePaymentDisclosure(string paymentDisclosure)
         {
-            return GetRPCTypedResult<ZValidatePaymentDisclosureResult>(ZendRPCCommands[ZendRPCCommand.ZValidatePaymentDisclosure],
+            return GetRPCTypedResult<ZValidatePaymentDisclosureResult>(ZendRPCCommand.ZValidatePaymentDisclosure.GetDescription(),
                 new object[] {$"{paymentDisclosure}"});
 
             #endregion

@@ -16,7 +16,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         z_validateaddress "zaddr"
         */
         CreateMultiSigResult CreateMultiSig(int nrequired, IList<string> keys);
-        float EstimateFee(int nblocks);
+        decimal EstimateFee(int nblocks);
         int EstimatePriority(int nblocks);
         ValidateAddressResult ValidateAddress(string address);
         bool VerifyMessage(string address, string signature, string message);

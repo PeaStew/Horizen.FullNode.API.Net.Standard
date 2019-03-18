@@ -34,9 +34,17 @@ namespace Horizen.FullNode.API.Net.Standard.RPCInputTypes
 
     public class GetBlockTemplateInput
     {
+        public GetBlockTemplateInput(string _mode, IList<GetBlockTemplateInputCapabilitiesType> _capabilities)
+        {
+            mode = _mode;
+            capabilities =  new List<string>();
+            foreach (var capability in _capabilities)
+            {
+                capabilities.Add(capability.GetDescription());
+            }
+        }
         public string mode { get; set; } = "template";
-        [JsonProperty(PropertyName = "capabilities", ItemConverterType = typeof(StringEnumConverter))]
-        public IList<GetBlockTemplateInputCapabilitiesType> capabilities { get; set; }
+        public IList<string> capabilities { get; set; }
     }
 
     public class SubmitBlockInput

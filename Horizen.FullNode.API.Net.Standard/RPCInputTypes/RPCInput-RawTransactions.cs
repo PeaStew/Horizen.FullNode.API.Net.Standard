@@ -9,7 +9,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCInputTypes
     public class CreateRawTransactionInput
     {
         public IList<Transaction> transactions { get; set; }
-        public IDictionary<string, float> addresses { get; set; }
+        public IDictionary<string, decimal> addresses { get; set; }
 
         public class Transaction
         {
@@ -26,7 +26,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCInputTypes
         public int vout { get; set; }
         public string scriptPubKey { get; set; }
         public string redeemScript { get; set; }
-        public float amount { get; set; }
+        public decimal amount { get; set; }
     }
 
     public enum SignRawTransactionInputSigHashType
