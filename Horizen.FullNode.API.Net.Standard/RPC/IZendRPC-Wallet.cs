@@ -47,49 +47,49 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         settxfee amount
         signmessage "horizenaddress" "message"
         */
-        string AddMultiSigAddress(int nrequired, IList<string> keysobject);
-        string BackupWallet(string filename); //filename
-        string DumpPrivKey(string t_addr);
-        string DumpWallet(string filename);
-        bool EncryptWallet(string passphrase);// https://zcash-rpc.github.io/encryptwallet.html
-        string GetAccount(string address); //returns null
-        string GetAccountAddress(string address = "");
-        IList<string> GetAddressesByAccount(string address = "");
-        double GetBalance(string account = "", int minconf = 1, bool includeWatchOnly = false);
-        string GetNewAddress(string account = "");
-        string GetRawChangeAddress();
-        double GetReceivedByAccount(string account = "", int minconf = 1);
-        double GetReceivedByAddress(string address, int minconf = 1);
-        GetTransactionResult GetTransaction(string txid, bool includeWatchOnly = false);
-        double GetUnconfirmedBalance();
-        GetWalletInfoResult GetWalletInfo();
-        bool ImportAddress(string address, string label = "", bool rescan = true);
-        bool ImportPrivKey(string privkey, string label = "", bool rescan = true);
-        bool ImportWallet(string filepath);
-        bool KeyPoolRefill(int newsize);
-        IList<ListAccountsResult> ListAccounts(int minconf = 1, bool includeWatchOnly = false);
-        IList<string> ListAddresses();
-        object[][][] ListAddressGroupings(); //[][][0] address, [][][1] balance, [][][2] account
-        IList<ListLockUnspentResult> ListLockUnspent();
-        IList<ListReceivedByAccountResult> ListReceivedByAccount(int minconf = 1, bool includeEmpty = false,
+        string AddMultiSigAddress(RPCConnection rpc,int nrequired, IList<string> keysobject);
+        string BackupWallet(RPCConnection rpc,string filename); //filename
+        string DumpPrivKey(RPCConnection rpc,string t_addr);
+        string DumpWallet(RPCConnection rpc,string filename);
+        bool EncryptWallet(RPCConnection rpc,string passphrase);// https://zcash-rpc.github.io/encryptwallet.html
+        string GetAccount(RPCConnection rpc,string address); //returns null
+        string GetAccountAddress(RPCConnection rpc,string address = "");
+        IList<string> GetAddressesByAccount(RPCConnection rpc,string address = "");
+        double GetBalance(RPCConnection rpc,string account = "", int minconf = 1, bool includeWatchOnly = false);
+        string GetNewAddress(RPCConnection rpc,string account = "");
+        string GetRawChangeAddress(RPCConnection rpc);
+        double GetReceivedByAccount(RPCConnection rpc,string account = "", int minconf = 1);
+        double GetReceivedByAddress(RPCConnection rpc,string address, int minconf = 1);
+        GetTransactionResult GetTransaction(RPCConnection rpc,string txid, bool includeWatchOnly = false);
+        double GetUnconfirmedBalance(RPCConnection rpc);
+        GetWalletInfoResult GetWalletInfo(RPCConnection rpc);
+        bool ImportAddress(RPCConnection rpc,string address, string label = "", bool rescan = true);
+        bool ImportPrivKey(RPCConnection rpc,string privkey, string label = "", bool rescan = true);
+        bool ImportWallet(RPCConnection rpc,string filepath);
+        bool KeyPoolRefill(RPCConnection rpc,int newsize);
+        IList<ListAccountsResult> ListAccounts(RPCConnection rpc,int minconf = 1, bool includeWatchOnly = false);
+        IList<string> ListAddresses(RPCConnection rpc);
+        object[][][] ListAddressGroupings(RPCConnection rpc); //[][][0] address, [][][1] balance, [][][2] account
+        IList<ListLockUnspentResult> ListLockUnspent(RPCConnection rpc);
+        IList<ListReceivedByAccountResult> ListReceivedByAccount(RPCConnection rpc,int minconf = 1, bool includeEmpty = false,
             bool includeWatchOnly = false);
-        IList<ListReceivedByAddressResult> ListReceivedByAddress(int minconf = 1, bool includeEmpty = false,
+        IList<ListReceivedByAddressResult> ListReceivedByAddress(RPCConnection rpc,int minconf = 1, bool includeEmpty = false,
             bool includeWatchOnly = false);
-        ListSinceBlockResult ListSinceBlock(string blockhash = null, int targetCOnfirmations = 1,
+        ListSinceBlockResult ListSinceBlock(RPCConnection rpc,string blockhash = null, int targetCOnfirmations = 1,
             bool includeWatchOnly = false);
-        IList<ListTransactionsResult> ListTransactions(string account = "*", int count = 10, int from = 0,
+        IList<ListTransactionsResult> ListTransactions(RPCConnection rpc,string account = "*", int count = 10, int from = 0,
             bool includeWatchOnly = false);
-        IList<ListUnspentResult> ListUnspent(int minconf = 1, int maxconf = 9999999, IList<string> addresses = null); // TODO: coincontrol
-        bool LockUnspent(bool unlock, IList<LockUnspentInputTransaction> transactions);// TODO: coincontrol
-        bool Move(string fromAccount = "", string toAccount = "", double amount = double.NaN, int minconf = 1,
+        IList<ListUnspentResult> ListUnspent(RPCConnection rpc,int minconf = 1, int maxconf = 9999999, IList<string> addresses = null); // TODO: coincontrol
+        bool LockUnspent(RPCConnection rpc,bool unlock, IList<LockUnspentInputTransaction> transactions);// TODO: coincontrol
+        bool Move(RPCConnection rpc,string fromAccount = "", string toAccount = "", double amount = double.NaN, int minconf = 1,
             string comment = null);//TODO: throw deprecated
-        string SendFrom(string fromAccount = "", string toAccount = "", double amount = double.NaN,
+        string SendFrom(RPCConnection rpc,string fromAccount = "", string toAccount = "", double amount = double.NaN,
             int minconf = 1,
             string comment = null);
-        string SendMany(string address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null);
-        string SendToAddress(string address, double amount, string comment, string commentto, bool subtractfeefromamount = false);
-        void SetAccount(string address, string account = "");
-        bool SetTxFee(double amount);
-        string SignMessage(string taddr, string message);
+        string SendMany(RPCConnection rpc,string address, IList<SendManyInput> outputs, int minconf = 1, string comment = null, IList<string> subtractfeefromamount = null);
+        string SendToAddress(RPCConnection rpc,string address, double amount, string comment, string commentto, bool subtractfeefromamount = false);
+        void SetAccount(RPCConnection rpc,string address, string account = "");
+        bool SetTxFee(RPCConnection rpc,double amount);
+        string SignMessage(RPCConnection rpc,string taddr, string message);
     }
 }

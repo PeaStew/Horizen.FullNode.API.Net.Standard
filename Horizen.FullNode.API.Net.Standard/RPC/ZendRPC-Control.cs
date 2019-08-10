@@ -12,19 +12,19 @@ namespace Horizen.FullNode.API.Net.Standard
     {
 
         #region Control
-        public GetInfoResult GetInfo()
+        public GetInfoResult GetInfo(RPCConnection rpc)
         {
-            return GetRPCTypedResult<GetInfoResult>(ZendRPCCommand.GetInfo.GetDescription(), new object[0]);
+            return GetRPCTypedResult<GetInfoResult>(rpc, ZendRPCCommand.GetInfo.GetDescription(), new object[0]);
         }
 
-        public string Help(string command)
+        public string Help(RPCConnection rpc,string command)
         {
-            return GetRPCTypedResult<string>(ZendRPCCommand.Help.GetDescription(), new object[]{$"{command}"});
+            return GetRPCTypedResult<string>(rpc, ZendRPCCommand.Help.GetDescription(), new object[]{$"{command}"});
         }
 
-        public void Stop()
+        public void Stop(RPCConnection rpc)
         {
-            GetRPCTypedResult<string>(ZendRPCCommand.Stop.GetDescription(), new object[0]);
+            GetRPCTypedResult<string>(rpc, ZendRPCCommand.Stop.GetDescription(), new object[0]);
         }
         #endregion
 

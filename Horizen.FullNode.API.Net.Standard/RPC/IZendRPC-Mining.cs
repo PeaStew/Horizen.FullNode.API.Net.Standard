@@ -20,13 +20,13 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         submitblock "hexdata" ( "jsonparametersobject" )
         */
 
-        GetBlockSubsidyResult GetBlockSubsidy(int? height);
-        GetBlockTemplateResult GetBlockTemplate(GetBlockTemplateInput jsonRequestObject = null);
-        int GetLocalSolps();
-        GetMiningInfoResult GetMiningInfo();
-        int GetNetworkHashPs(int blocks = 120, int height = -1);
-        int GetNetworkSolPs(int blocks = 120, int height = -1);
-        bool PrioritiseTransaction(string txid, double priorityDelta, int feeDelta);
-        string submitblock(string hexdata, SubmitBlockInput jsonparametersobject);
+        GetBlockSubsidyResult GetBlockSubsidy(RPCConnection rpc, int? height);
+        GetBlockTemplateResult GetBlockTemplate(RPCConnection rpc, GetBlockTemplateInput jsonRequestObject = null);
+        int GetLocalSolps(RPCConnection rpc);
+        GetMiningInfoResult GetMiningInfo(RPCConnection rpc);
+        int GetNetworkHashPs(RPCConnection rpc,int blocks = 120, int height = -1);
+        int GetNetworkSolPs(RPCConnection rpc, int blocks = 120, int height = -1);
+        bool PrioritiseTransaction(RPCConnection rpc, string txid, double priorityDelta, int feeDelta);
+        string submitblock(RPCConnection rpc, string hexdata, SubmitBlockInput jsonparametersobject);
     }
 }
