@@ -14,11 +14,13 @@ namespace Horizen.FullNode.API.Net.Standard
 {
     public class RPCConnection
     {
+        public string ConnectionName { get; set; }
         public string RPCIpAddress { get; set; } = "localhost";
-        public int RPCPort { get; set; } = 18231;
-        public string RPCUser { get; set; } = "asdfk87aios";
-        public string RPCPassword { get; set; } = "asdfsdfasgffdgfdsi787690879siuhdfjh";
+        public int RPCPort { get; set; }
+        public string RPCUser { get; set; }
+        public string RPCPassword { get; set; }
         public bool RPCActive { get; private set; } = false;
+        public int RPCConnectionLimit { get; set; } = 4000;
 
         public string RunCommand(string commandName, object[] _params)
         {
@@ -32,7 +34,7 @@ namespace Horizen.FullNode.API.Net.Standard
         {
             using (var wc = new WebClient())
             {
-                ServicePointManager.DefaultConnectionLimit = 500;
+                ServicePointManager.DefaultConnectionLimit = RPCConnectionLimit;
                 RPCActive = true;
                 wc.Headers[HttpRequestHeader.ContentType] = "text/plain";
                 wc.Credentials = new NetworkCredential { UserName = RPCUser, Password = RPCPassword };

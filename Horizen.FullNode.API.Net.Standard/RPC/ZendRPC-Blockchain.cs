@@ -33,7 +33,7 @@ namespace Horizen.FullNode.API.Net.Standard
 
         public string GetBlock(RPCConnection rpc, int height)
         {
-            return GetRPCTypedResult<string>(rpc, ZendRPCCommand.GetBlock.GetDescription(), new object[] { $"{height}", false });
+            return GetRPCTypedResult<string>(rpc, ZendRPCCommand.GetBlock.GetDescription(), new object[] { $"{height}", true });
         }
 
         public GetBlockChainInfoResult GetBlockChainInfo(RPCConnection rpc)
