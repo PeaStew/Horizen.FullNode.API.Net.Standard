@@ -30,6 +30,13 @@ namespace Horizen.FullNode.API.Net.Standard
             }
         }
 
+        public T GetRPCTypedResult<T>(RPCConnection rpc, List<RPCData> data)
+        {
+            var result = rpc.RunCommand(data);
+
+            return JsonConvert.DeserializeObject<T>(result);
+        }
+
         public enum ZendRPCCommand
         {
             //Blockchain

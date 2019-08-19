@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
@@ -26,11 +27,32 @@ namespace Horizen.FullNode.API.Net.Standard
         {
             //TODO: Check for error
             var result = this.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), commandName, _params));
-            Console.WriteLine(JsonConvert.SerializeObject(result.error));
+            //Console.WriteLine(JsonConvert.SerializeObject(result.error));
             return JsonConvert.SerializeObject(result.result);
         }
 
-        private WebClientResponse GetRPCResult(RPCData rpcData)
+        //https://www.jsonrpc.org/specification
+        public string RunCommand(List<RPCData> rpcData)
+        {
+            //TODO: Check for error
+            var result = this.GetRPCResult(rpcData);
+            //Console.WriteLine(JsonConvert.SerializeObject(result.error));
+            return JsonConvert.SerializeObject(result.Select(a=>a.result));
+        }
+
+        private WebClientResponse GetRPCResult(RPCData data)
+        {
+            return JsonConvert.DeserializeObject<WebClientResponse>(GetRPCResult(JsonConvert.SerializeObject(data)));
+
+        }
+
+        private List<WebClientResponse> GetRPCResult(List<RPCData> data)
+        {
+            return JsonConvert.DeserializeObject<List<WebClientResponse>>(GetRPCResult(JsonConvert.SerializeObject(data)));
+
+        }
+
+        private string GetRPCResult(string jsonText)
         {
             using (var wc = new WebClient())
             {
@@ -38,15 +60,16 @@ namespace Horizen.FullNode.API.Net.Standard
                 RPCActive = true;
                 wc.Headers[HttpRequestHeader.ContentType] = "text/plain";
                 wc.Credentials = new NetworkCredential { UserName = RPCUser, Password = RPCPassword };
-                var jsonText = rpcData.GetJsonString();
                 var response = wc.UploadString($"http://{RPCIpAddress}:{RPCPort}", jsonText);
                 RPCActive = false;
-                return JsonConvert.DeserializeObject<WebClientResponse>(response);
+                return response;
                 
             }
 
         }
     }
+
+
 
 
     public class RPCData
@@ -58,7 +81,7 @@ namespace Horizen.FullNode.API.Net.Standard
             this._params = parameters;
         }
 
-        public string jsonrpc { get; set; } = "1.0";
+        public string jsonrpc { get; set; } = "2.0";
         public string id { get; set; }
         public string method { get; set; }
         [JsonProperty("params")]
