@@ -9,10 +9,10 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         help ( "command" )
         stop
         */
-        GetInfoResult GetInfo();
+        GetInfoResult GetInfo(RPCConnection rpc);
 
-        string Help(string command = null);
+        string Help(RPCConnection rpc, string command = null);
 
-        void Stop();
+        void Stop(RPCConnection rpc);
     }
 }

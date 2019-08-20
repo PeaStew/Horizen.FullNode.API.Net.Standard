@@ -12,59 +12,59 @@ namespace Horizen.FullNode.API.Net.Standard
     {
 
         #region Network
-        public bool AddNode(string ipAddress, int port, AddNodeCommand command)
+        public bool AddNode(RPCConnection rpc, string ipAddress, int port, AddNodeCommand command)
         {
-            return GetRPCTypedResult<bool>(ZendRPCCommand.AddNode.GetDescription(), new object[] { $"{ipAddress}", port, command});
+            return GetRPCTypedResult<bool>(rpc, ZendRPCCommand.AddNode.GetDescription(), new object[] { $"{ipAddress}", port, command});
         }
 
-        public bool ClearBanned()
+        public bool ClearBanned(RPCConnection rpc)
         {
-            return GetRPCTypedResult<bool>(ZendRPCCommand.ClearBanned.GetDescription(), new object[0]);
+            return GetRPCTypedResult<bool>(rpc, ZendRPCCommand.ClearBanned.GetDescription(), new object[0]);
         }
 
-        public bool DisconnectNode(string ipAddress, int port)
+        public bool DisconnectNode(RPCConnection rpc, string ipAddress, int port)
         {
-            return GetRPCTypedResult<bool>(ZendRPCCommand.DisconnectNode.GetDescription(), new object[] { $"{ipAddress}", port });
+            return GetRPCTypedResult<bool>(rpc, ZendRPCCommand.DisconnectNode.GetDescription(), new object[] { $"{ipAddress}", port });
         }
 
-        public IList<AddedNodeResult> GetAddedNodeInfo(bool dns, string ipAddress = null, int? port = null)
+        public IList<AddedNodeResult> GetAddedNodeInfo(RPCConnection rpc, bool dns, string ipAddress = null, int? port = null)
         {
-            return GetRPCTypedResult<List<AddedNodeResult>>(ZendRPCCommand.GetAddedNodeInfo.GetDescription(), new object[] { dns, $"{ipAddress}", port });
+            return GetRPCTypedResult<List<AddedNodeResult>>(rpc, ZendRPCCommand.GetAddedNodeInfo.GetDescription(), new object[] { dns, $"{ipAddress}", port });
         }
 
-        public int GetConnectionCount()
+        public int GetConnectionCount(RPCConnection rpc)
         {
-            return GetRPCTypedResult<int>(ZendRPCCommand.GetConnectionCount.GetDescription(), new object[0]);
+            return GetRPCTypedResult<int>(rpc, ZendRPCCommand.GetConnectionCount.GetDescription(), new object[0]);
         }
 
-        public GetNetTotalsResult GetNetTotals()
+        public GetNetTotalsResult GetNetTotals(RPCConnection rpc)
         {
-            return GetRPCTypedResult<GetNetTotalsResult>(ZendRPCCommand.GetNetTotals.GetDescription(), new object[0]);
+            return GetRPCTypedResult<GetNetTotalsResult>(rpc, ZendRPCCommand.GetNetTotals.GetDescription(), new object[0]);
         }
 
-        public GetNetworkInfoResult GetNetworkInfo()
+        public GetNetworkInfoResult GetNetworkInfo(RPCConnection rpc)
         {
-            return GetRPCTypedResult<GetNetworkInfoResult>(ZendRPCCommand.GetNetworkInfo.GetDescription(), new object[0]);
+            return GetRPCTypedResult<GetNetworkInfoResult>(rpc, ZendRPCCommand.GetNetworkInfo.GetDescription(), new object[0]);
         }
 
-        public IList<PeerInfoResult> GetPeerInfo()
+        public IList<PeerInfoResult> GetPeerInfo(RPCConnection rpc)
         {
-            return GetRPCTypedResult<List<PeerInfoResult>>(ZendRPCCommand.GetPeerInfo.GetDescription(), new object[0]);
+            return GetRPCTypedResult<List<PeerInfoResult>>(rpc, ZendRPCCommand.GetPeerInfo.GetDescription(), new object[0]);
         }
 
-        public IList<BannedPeersResult> ListBanned()
+        public IList<BannedPeersResult> ListBanned(RPCConnection rpc)
         {
-            return GetRPCTypedResult<List<BannedPeersResult>>(ZendRPCCommand.ListBanned.GetDescription(), new object[0]);
+            return GetRPCTypedResult<List<BannedPeersResult>>(rpc, ZendRPCCommand.ListBanned.GetDescription(), new object[0]);
         }
 
-        public bool Ping()
+        public bool Ping(RPCConnection rpc)
         {
-            return GetRPCTypedResult<bool>(ZendRPCCommand.Ping.GetDescription(), new object[0]);
+            return GetRPCTypedResult<bool>(rpc, ZendRPCCommand.Ping.GetDescription(), new object[0]);
         }
 
-        public bool SetBan(string ipaddress, int? netmask, SetBanCommand AddRemove, int? bantimeSeconds, bool absolute)
+        public bool SetBan(RPCConnection rpc, string ipaddress, int? netmask, SetBanCommand AddRemove, int? bantimeSeconds, bool absolute)
         {
-            return GetRPCTypedResult<bool>(ZendRPCCommand.SetBan.GetDescription(), new object[]{ipaddress,netmask,AddRemove,bantimeSeconds,absolute});
+            return GetRPCTypedResult<bool>(rpc, ZendRPCCommand.SetBan.GetDescription(), new object[]{ipaddress,netmask,AddRemove,bantimeSeconds,absolute});
         }
         #endregion
     }

@@ -11,11 +11,10 @@ namespace Horizen.FullNode.API.Net.Standard
 {
     public partial class ZendRPC:IZendRPC
     {
-        
 
-        public T GetRPCTypedResult<T>(string method, object[] _params)
+        public T GetRPCTypedResult<T>(RPCConnection rpc, string method, object[] _params)
         {
-            var result = new RPCConnection().RunCommand(method, _params);
+            var result = rpc.RunCommand(method, _params);
             if (typeof(T) == typeof(string)
                 || typeof(T) == typeof(int)
                 || typeof(T) == typeof(long)
@@ -29,6 +28,13 @@ namespace Horizen.FullNode.API.Net.Standard
             {
                 return JsonConvert.DeserializeObject<T>(result);
             }
+        }
+
+        public T GetRPCTypedResult<T>(RPCConnection rpc, List<RPCData> data)
+        {
+            var result = rpc.RunCommand(data);
+
+            return JsonConvert.DeserializeObject<T>(result);
         }
 
         public enum ZendRPCCommand

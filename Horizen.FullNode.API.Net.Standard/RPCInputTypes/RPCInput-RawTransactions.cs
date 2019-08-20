@@ -20,7 +20,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPCInputTypes
 
     }
 
-    public class SignRawTransactionInputPreviousTranscations
+    public class SignRawTransactionInputPreviousTransactions
     {
         public string txid { get; set; }
         public int vout { get; set; }

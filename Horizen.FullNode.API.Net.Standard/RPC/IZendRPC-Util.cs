@@ -15,11 +15,11 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
         verifymessage "zcashaddress" "signature" "message"
         z_validateaddress "zaddr"
         */
-        CreateMultiSigResult CreateMultiSig(int nrequired, IList<string> keys);
-        double EstimateFee(int nblocks);
-        int EstimatePriority(int nblocks);
-        ValidateAddressResult ValidateAddress(string address);
-        bool VerifyMessage(string address, string signature, string message);
-        ZValidateAddressResult zValidateAddress(string zaddress);
+        CreateMultiSigResult CreateMultiSig(RPCConnection rpc, int nrequired, IList<string> keys);
+        double EstimateFee(RPCConnection rpc, int nblocks);
+        int EstimatePriority(RPCConnection rpc, int nblocks);
+        ValidateAddressResult ValidateAddress(RPCConnection rpc, string address);
+        bool VerifyMessage(RPCConnection rpc, string address, string signature, string message);
+        ZValidateAddressResult zValidateAddress(RPCConnection rpc, string zaddress);
     }
 }

@@ -7,7 +7,7 @@ namespace Horizen.FullNode.API.Net.Standard.RPC
 {
     public interface IZendRPC: IZendRPCBlockchain, IZendRPCControl, IZendRPCDisclosure, IZendRPCGenerating, IZendRPCMining, IZendRPCNetwork, IZendRPCRawTransaction, IZendRPCUtil, IZendRPCWallet, IZendRPCZCommands
     {
-        T GetRPCTypedResult<T>(string method, object[] _params);
+        T GetRPCTypedResult<T>(RPCConnection rpc, string method, object[] _params);
     }
 }
 //        /* Commands
