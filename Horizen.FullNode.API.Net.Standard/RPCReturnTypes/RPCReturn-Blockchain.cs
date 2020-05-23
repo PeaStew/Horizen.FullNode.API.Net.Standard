@@ -25,6 +25,12 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
         public string chainwork { get; set; }
         public string anchor { get; set; }
         public string previousblockhash { get; set; }
+        public Valuepool[] valuePools { get; set; }
+        public class Valuepool
+        {
+            public string id { get; set; }
+            public bool monitored { get; set; }
+        }
     }
 
 

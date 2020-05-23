@@ -42,7 +42,7 @@ namespace Horizen.FullNode.API.Net.Standard
         public string RunCommand(RPCData rpcData)
         {
             var result = this.GetRPCResult(rpcData);
-            return JsonConvert.SerializeObject(result);
+            return JsonConvert.SerializeObject(result.result);
         }
 
         public string RunCommand(List<RPCData> rpcData)

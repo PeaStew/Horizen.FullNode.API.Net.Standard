@@ -44,6 +44,7 @@ namespace Horizen.FullNode.API.Net.Standard
             }
             else
             {
+                var deser = JsonConvert.DeserializeObject<T>(result);
                 return JsonConvert.DeserializeObject<T>(result);
             }
         }

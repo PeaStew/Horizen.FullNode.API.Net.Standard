@@ -28,7 +28,8 @@ namespace Horizen.FullNode.API.Net.Standard
 
         public GetBlockResult GetBlock(RPCConnection rpc, int height, int verbosity)
         {
-            return GetRPCTypedResult<GetBlockResult>(rpc, ZendRPCCommand.GetBlock, new object[] { $"{height}", true });
+            var res = GetRPCTypedResult<GetBlockResult>(rpc, ZendRPCCommand.GetBlock, new object[] { $"{height}", true });
+            return res;
         }
 
         public string GetBlock(RPCConnection rpc, int height)
