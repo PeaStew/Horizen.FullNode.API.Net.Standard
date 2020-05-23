@@ -34,7 +34,7 @@ namespace Horizen.FullNode.API.Net.Standard.CustomReturnTypes
 
         public void AddMessage(OPReturnMessage message)
         {
-
+            //TODO: using python script as basis, rewrite for C#
         }
         public string Serialize()
         {

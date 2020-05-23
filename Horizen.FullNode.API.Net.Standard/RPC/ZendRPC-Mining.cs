@@ -14,12 +14,12 @@ namespace Horizen.FullNode.API.Net.Standard
         #region Mining
         public GetBlockSubsidyResult GetBlockSubsidy(RPCConnection rpc, int? height)
         {
-            return GetRPCTypedResult<GetBlockSubsidyResult>(rpc, ZendRPCCommand.GetBlockSubsidy.GetDescription(), height == null ? new object[0] :new object[] { height });
+            return GetRPCTypedResult<GetBlockSubsidyResult>(rpc, ZendRPCCommand.GetBlockSubsidy, height == null ? new object[0] :new object[] { height });
         }
 
         public GetBlockTemplateResult GetBlockTemplate(RPCConnection rpc, GetBlockTemplateInput jsonRequestObject = null)
         {
-            return GetRPCTypedResult<GetBlockTemplateResult>(rpc, ZendRPCCommand.GetBlockTemplate.GetDescription(),
+            return GetRPCTypedResult<GetBlockTemplateResult>(rpc, ZendRPCCommand.GetBlockTemplate,
                 jsonRequestObject == null ? new object[0] : new object[] {jsonRequestObject});
             //TODO: Check format (below), currently seems to return only 'proposal' as capability regardless of which way the message is sent
             //{
@@ -29,12 +29,12 @@ namespace Horizen.FullNode.API.Net.Standard
 
         public int GetLocalSolps(RPCConnection rpc)
         {
-            return GetRPCTypedResult<int>(rpc, ZendRPCCommand.GetLocalSolPs.GetDescription(), new object[0]);
+            return GetRPCTypedResult<int>(rpc, ZendRPCCommand.GetLocalSolPs, new object[0]);
         }
 
         public GetMiningInfoResult GetMiningInfo(RPCConnection rpc)
         {
-            return GetRPCTypedResult<GetMiningInfoResult>(rpc, ZendRPCCommand.GetMiningInfo.GetDescription(), new object[0]);
+            return GetRPCTypedResult<GetMiningInfoResult>(rpc, ZendRPCCommand.GetMiningInfo, new object[0]);
         }
 
         public int GetNetworkHashPs(RPCConnection rpc, int blocks = 120, int height = -1)
@@ -44,17 +44,17 @@ namespace Horizen.FullNode.API.Net.Standard
 
         public int GetNetworkSolPs(RPCConnection rpc, int blocks = 120, int height = -1)
         {
-            return GetRPCTypedResult<int>(rpc, ZendRPCCommand.GetNetworkSolPs.GetDescription(), new object[]{blocks,height});
+            return GetRPCTypedResult<int>(rpc, ZendRPCCommand.GetNetworkSolPs, new object[]{blocks,height});
         }
 
         public bool PrioritiseTransaction(RPCConnection rpc, string txid, double priorityDelta, int feeDelta)
         {
-            return GetRPCTypedResult<bool>(rpc, ZendRPCCommand.PrioritiseTransaction.GetDescription(), new object[] { $"{txid}", priorityDelta, feeDelta });
+            return GetRPCTypedResult<bool>(rpc, ZendRPCCommand.PrioritiseTransaction, new object[] { $"{txid}", priorityDelta, feeDelta });
         }
 
         public string submitblock(RPCConnection rpc, string hexdata, SubmitBlockInput jsonparametersobject)
         {
-            return GetRPCTypedResult<string>(rpc, ZendRPCCommand.SubmitBlock.GetDescription(), new object[] { $"{hexdata}", jsonparametersobject });
+            return GetRPCTypedResult<string>(rpc, ZendRPCCommand.SubmitBlock, new object[] { $"{hexdata}", jsonparametersobject });
         }
         #endregion
     }

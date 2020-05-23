@@ -17,7 +17,7 @@ namespace Horizen.FullNode.API.Net.Standard
             var data = new List<RPCData>();
             foreach (var txid in txids)
             {
-                data.Add(new RPCData(txid, ZendRPCCommand.GetRawTransaction.GetDescription(),  new object[] { $"{txid}", 1 }));
+                data.Add(new RPCData(txid, ZendRPCCommand.GetRawTransaction,  new object[] { $"{txid}", 1 }));
             }
             return GetRPCTypedResult<List<GetRawTransactionVerboseResult>>(rpc, data);
         }

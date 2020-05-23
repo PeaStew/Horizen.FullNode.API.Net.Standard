@@ -14,17 +14,17 @@ namespace Horizen.FullNode.API.Net.Standard
         #region Control
         public GetInfoResult GetInfo(RPCConnection rpc)
         {
-            return GetRPCTypedResult<GetInfoResult>(rpc, ZendRPCCommand.GetInfo.GetDescription(), new object[0]);
+            return GetRPCTypedResult<GetInfoResult>(rpc, ZendRPCCommand.GetInfo, new object[0]);
         }
 
         public string Help(RPCConnection rpc,string command)
         {
-            return GetRPCTypedResult<string>(rpc, ZendRPCCommand.Help.GetDescription(), new object[]{$"{command}"});
+            return GetRPCTypedResult<string>(rpc, ZendRPCCommand.Help, new object[]{$"{command}"});
         }
 
         public void Stop(RPCConnection rpc)
         {
-            GetRPCTypedResult<string>(rpc, ZendRPCCommand.Stop.GetDescription(), new object[0]);
+            GetRPCTypedResult<string>(rpc, ZendRPCCommand.Stop, new object[0]);
         }
         #endregion
 

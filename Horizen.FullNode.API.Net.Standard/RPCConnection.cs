@@ -7,9 +7,11 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Text;
+using Horizen.FullNode.API.Net.Standard.RPC;
 using Newtonsoft.Json;
 using StreamJsonRpc;
 using StreamJsonRpc.Protocol;
+using static Horizen.FullNode.API.Net.Standard.ZendRPC;
 
 namespace Horizen.FullNode.API.Net.Standard
 {
@@ -23,20 +25,29 @@ namespace Horizen.FullNode.API.Net.Standard
         public bool RPCActive { get; private set; } = false;
         public int RPCConnectionLimit { get; set; } = 4000;
 
-        public string RunCommand(string commandName, object[] _params)
+        // for use with the enum, which may not cover 100% of available commands when a new release is made available.
+        public string RunCommand(ZendRPCCommand commandName, object[] _params, string identifier = null)
         {
-            //TODO: Check for error
-            var result = this.GetRPCResult(new RPCData(Guid.NewGuid().ToString(), commandName, _params));
-            //Console.WriteLine(JsonConvert.SerializeObject(result.error));
-            return JsonConvert.SerializeObject(result.result);
+            return RunCommand(new RPCData(identifier, Utils.GetDescription(commandName), _params));
+        }
+        // command string for use when the command is not supported by the enum
+        public string RunCommand(string commandName, object[] _params, string identifier = null)
+        {
+            return RunCommand(new RPCData(identifier, commandName, _params));
         }
 
         //https://www.jsonrpc.org/specification
+
+
+        public string RunCommand(RPCData rpcData)
+        {
+            var result = this.GetRPCResult(rpcData);
+            return JsonConvert.SerializeObject(result);
+        }
+
         public string RunCommand(List<RPCData> rpcData)
         {
-            //TODO: Check for error
             var result = this.GetRPCResult(rpcData);
-            //Console.WriteLine(JsonConvert.SerializeObject(result.error));
             return JsonConvert.SerializeObject(result.Select(a=>a.result));
         }
 
@@ -76,8 +87,15 @@ namespace Horizen.FullNode.API.Net.Standard
     {
         public RPCData(string id, string method, object[] parameters)
         {
-            this.id = id;
+            this.id = string.IsNullOrEmpty(id) ? Guid.NewGuid().ToString() : id;
             this.method = method;
+            this._params = parameters;
+        }
+
+        public RPCData(string id, ZendRPCCommand commandName, object[] parameters)
+        {
+            this.id = string.IsNullOrEmpty(id) ? Guid.NewGuid().ToString() : id;
+            this.method = commandName.GetDescription();
             this._params = parameters;
         }
 
