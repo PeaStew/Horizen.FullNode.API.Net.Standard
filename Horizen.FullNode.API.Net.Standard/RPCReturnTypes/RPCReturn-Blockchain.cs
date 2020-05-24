@@ -31,9 +31,9 @@ namespace Horizen.FullNode.API.Net.Standard.RPCReturnTypes
             public string id { get; set; }
             public bool monitored { get; set; }
             public float chainValue { get; set; }
-            public int chainValueZat { get; set; }
+            public long chainValueZat { get; set; }
             public float valueDelta { get; set; }
-            public int valueDeltaZat { get; set; }
+            public long valueDeltaZat { get; set; }
         }
     }
 
