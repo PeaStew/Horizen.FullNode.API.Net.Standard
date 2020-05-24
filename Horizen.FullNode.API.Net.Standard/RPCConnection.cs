@@ -73,6 +73,7 @@ namespace Horizen.FullNode.API.Net.Standard
                 wc.Credentials = new NetworkCredential { UserName = RPCUser, Password = RPCPassword };
                 var response = wc.UploadString($"http://{RPCIpAddress}:{RPCPort}", jsonText);
                 RPCActive = false;
+                wc.Dispose();
                 return response;
                 
             }

@@ -19,7 +19,6 @@ namespace Horizen.FullNode.API.Net.Standard
                 || typeof(T) == typeof(int)
                 || typeof(T) == typeof(long)
                 || typeof(T) == typeof(double)
-                || typeof(T) == typeof(double)
                 || typeof(T) == typeof(bool))
             {
                 return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(result.Replace("\"", "")));
@@ -37,16 +36,13 @@ namespace Horizen.FullNode.API.Net.Standard
                 || typeof(T) == typeof(int)
                 || typeof(T) == typeof(long)
                 || typeof(T) == typeof(double)
-                || typeof(T) == typeof(double)
                 || typeof(T) == typeof(bool))
             {
                 return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(result.Replace("\"", "")));
             }
-            else
-            {
-                var deser = JsonConvert.DeserializeObject<T>(result);
-                return JsonConvert.DeserializeObject<T>(result);
-            }
+
+            return JsonConvert.DeserializeObject<T>(result);
+
         }
 
         public T GetRPCTypedResult<T>(RPCConnection rpc, List<RPCData> data)
