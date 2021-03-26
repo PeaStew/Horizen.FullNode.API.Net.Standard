@@ -15,6 +15,8 @@ namespace Horizen.FullNode.API.Net.Standard
         public T GetRPCTypedResult<T>(RPCConnection rpc, string commandName, object[] _params)
         {
             var result = rpc.RunCommand(commandName, _params);
+            if (string.IsNullOrEmpty(result)) return default(T);
+            if (string.IsNullOrEmpty(result)) throw new Exception("Result is null");
             if (typeof(T) == typeof(string)
                 || typeof(T) == typeof(int)
                 || typeof(T) == typeof(long)
@@ -32,6 +34,8 @@ namespace Horizen.FullNode.API.Net.Standard
         public T GetRPCTypedResult<T>(RPCConnection rpc, ZendRPCCommand commandName, object[] _params)
         {
             var result = rpc.RunCommand(commandName, _params);
+            if (string.IsNullOrEmpty(result)) return default(T);
+
             if (typeof(T) == typeof(string)
                 || typeof(T) == typeof(int)
                 || typeof(T) == typeof(long)
@@ -48,8 +52,7 @@ namespace Horizen.FullNode.API.Net.Standard
         public T GetRPCTypedResult<T>(RPCConnection rpc, List<RPCData> data)
         {
             var result = rpc.RunCommand(data);
-
-            return JsonConvert.DeserializeObject<T>(result);
+            return string.IsNullOrEmpty(result) ? default(T) : JsonConvert.DeserializeObject<T>(result);
         }
 
         public enum ZendRPCCommand

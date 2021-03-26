@@ -42,13 +42,13 @@ namespace Horizen.FullNode.API.Net.Standard
         public string RunCommand(RPCData rpcData)
         {
             var result = this.GetRPCResult(rpcData);
-            return JsonConvert.SerializeObject(result.result);
+            return result.error != null ? null : JsonConvert.SerializeObject(result.result);
         }
 
         public string RunCommand(List<RPCData> rpcData)
         {
             var result = this.GetRPCResult(rpcData);
-            return JsonConvert.SerializeObject(result.Select(a=>a.result));
+            return JsonConvert.SerializeObject(result.Where(a=>a.error == null).Select(a=>a.result));
         }
 
         private WebClientResponse GetRPCResult(RPCData data)
